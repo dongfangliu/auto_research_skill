@@ -11,6 +11,7 @@ This repository provides:
 - Research lifecycle rules.
 - Agent role and gate policies.
 - Project profile guidance.
+- Alignment-first initialization guidance.
 - Markdown templates for research cards.
 - A minimal example project showing the full loop.
 - Submodule adoption and upgrade instructions.
@@ -72,13 +73,28 @@ Every stage supports:
 
 ## Start Here
 
-Read these files in order:
+For framework orientation, read these files in order:
 
 1. `framework/lifecycle.md`
 2. `framework/state_model.md`
 3. `framework/agent_roles.md`
 4. `framework/profile_guide.md`
-5. `framework/submodule_adoption.md`
+5. `framework/initialization.md`
+6. `framework/submodule_adoption.md`
 
 Then inspect `examples/mini_project/` for a complete example trail.
 
+## Initialize A Project
+
+Initialization is alignment-first. The agent should understand the project and confirm the user's intent before writing files.
+
+If this framework is already available as `.auto_research/framework/` inside a project, ask a coding agent:
+
+```text
+请读取 .auto_research/framework/prompts/init_project.md，
+按其中流程帮助我初始化当前科研项目。
+先做只读 discovery 和 Alignment Brief，
+不要在我确认前创建或修改文件。
+```
+
+If the framework has not been added yet, provide `prompts/init_project.md` directly to the agent or point it to this repository.

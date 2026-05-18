@@ -4,10 +4,12 @@ Concrete research projects should consume this framework as a git submodule.
 
 ## Add Framework To A Project
 
+Use the exact framework URL chosen by the user or project. Do not switch between SSH and HTTPS automatically.
+
 From the consumer project root:
 
 ```powershell
-git submodule add git@github.com:dongfangliu/auto_research_skill.git .auto_research/framework
+git submodule add <framework-url> .auto_research/framework
 git submodule update --init --recursive
 ```
 
@@ -64,4 +66,3 @@ migration_notes:
 - Local-only behavior belongs in `PROJECT_PROFILE.md`.
 - Cross-project lessons should become framework issues or framework changes.
 - Repeated manual steps may become scripts or CLI commands later.
-
