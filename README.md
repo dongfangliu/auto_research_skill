@@ -48,6 +48,81 @@ Those should be added only after file-based workflows have been tested in real p
 
 The submodule stores reusable framework files only. Project research state belongs in `research/`, and project-specific behavior belongs in `.auto_research/PROJECT_PROFILE.md`.
 
+## Codex Skill
+
+This repository includes a Codex skill source at `skills/auto-research/`. The repository copy is the versioned source of truth, but Codex only auto-discovers the skill after it is installed into the local Codex skills directory.
+
+### Install From GitHub
+
+If this repository is available on GitHub, ask Codex:
+
+```text
+Install the Codex skill from https://github.com/dongfangliu/auto_research_skill/tree/master/skills/auto-research
+```
+
+Then restart Codex so the skill is loaded.
+
+For private repositories, make sure your local GitHub credentials or `GITHUB_TOKEN` / `GH_TOKEN` can access the repository before asking Codex to install the skill.
+
+### Update From GitHub
+
+The Codex installer does not overwrite an existing skill by default. To update, remove the installed copy, reinstall from the same GitHub URL, then restart Codex.
+
+On Windows:
+
+```powershell
+Remove-Item -Recurse -Force "$env:USERPROFILE\.codex\skills\auto-research"
+```
+
+On macOS or Linux:
+
+```bash
+rm -rf "${CODEX_HOME:-$HOME/.codex}/skills/auto-research"
+```
+
+Then ask Codex again:
+
+```text
+Install the Codex skill from https://github.com/dongfangliu/auto_research_skill/tree/master/skills/auto-research
+```
+
+### Install From A Local Checkout
+
+For local development or offline use, install from a cloned checkout:
+
+```powershell
+$dest = Join-Path $env:USERPROFILE ".codex\skills\auto-research"
+if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
+Copy-Item -Recurse ".\skills\auto-research" $dest
+```
+
+On macOS or Linux:
+
+```bash
+dest="${CODEX_HOME:-$HOME/.codex}/skills/auto-research"
+rm -rf "$dest"
+mkdir -p "$(dirname "$dest")"
+cp -R ./skills/auto-research "$dest"
+```
+
+Restart Codex after installation so the skill is loaded.
+
+### Use The Skill
+
+After installation, users can invoke `$auto-research` or `$auto research` once to enter Auto Research mode for the current conversation. Codex should then keep applying the framework harness until the user explicitly exits that mode. For example:
+
+```text
+$auto-research help me continue this research project
+```
+
+Then follow up naturally:
+
+```text
+continue
+review the last experiment
+turn the evidence into claim cards
+```
+
 ## Research Loop
 
 The framework supports eight stages:

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Auto Research"
+  short_description: "Research harness for evidence-bound agent workflows"
+  default_prompt: "Use $auto-research to guide this research project with evidence-bound workflow discipline."
+
+policy:
+  allow_implicit_invocation: true
