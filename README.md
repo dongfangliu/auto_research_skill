@@ -50,7 +50,9 @@ The submodule stores reusable framework files only. Project research state belon
 
 ## Codex Skill
 
-This repository includes a Codex skill source at `skills/auto-research/`. The repository copy is the versioned source of truth, but Codex only auto-discovers the skill after it is installed into the local Codex skills directory.
+This repository includes a Codex skill source at `skills/auto-research/`. The repository copy is the versioned source of truth, but Codex only uses the skill after it is installed into the local Codex skills directory and the session is restarted.
+
+The skill is explicit-first to reduce token overhead in unrelated work. Invoke it with `$auto-research` or `$auto research` when you want the research harness active.
 
 ### Install From GitHub
 
@@ -109,7 +111,7 @@ Restart Codex after installation so the skill is loaded.
 
 ### Use The Skill
 
-After installation, users can invoke `$auto-research` or `$auto research` once to enter Auto Research mode for the current conversation. Codex should then keep applying the framework harness until the user explicitly exits that mode. For example:
+After installation, users can invoke `$auto-research` or `$auto research` once to enter Auto Research mode for the current conversation. The skill is configured with `allow_implicit_invocation: false`, so ordinary coding or writing tasks should not load it automatically. For example:
 
 ```text
 $auto-research help me continue this research project
@@ -122,6 +124,8 @@ continue
 review the last experiment
 turn the evidence into claim cards
 ```
+
+The skill loads detailed guidance lazily from `skills/auto-research/references/`, so a small continue/review task does not need to load initialization, manuscript, or upgrade instructions.
 
 ## Research Loop
 
