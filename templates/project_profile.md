@@ -4,7 +4,7 @@
 project_id:
 project_name:
 autonomy_level: L1 guided
-default_language: Chinese
+default_language: English
 framework_commit:
 updated_at:
 ```
@@ -58,7 +58,12 @@ Project-specific activation rules:
 
 Moves that agents should not take without explicit approval:
 
-- 
+- Experiment execution:
+- Evidence promotion:
+- Claim strengthening:
+- Manuscript prose:
+- Profile or framework changes:
+- Specialist or multi-agent work:
 
 ## Publish Standards
 
@@ -72,3 +77,6 @@ When this profile should be revised:
 
 - 
 
+## Persistent Feedback Rules
+
+Only record feedback here when it changes future project behavior, terms, claim boundaries, context budget, autonomy, or default review style. One-off response preferences should stay in the current response or affected card.

@@ -1,7 +1,7 @@
 interface:
   display_name: "Auto Research"
-  short_description: "Token-light harness for evidence-bound research workflows"
-  default_prompt: "Use $auto-research to continue this research project with minimal context loading and evidence-bound workflow discipline."
+  short_description: "Token-light, high-control harness for evidence-bound research workflows"
+  default_prompt: "Use $auto-research to continue this research project with minimal context loading, explicit action control, and evidence-bound workflow discipline."
 
 policy:
   allow_implicit_invocation: false

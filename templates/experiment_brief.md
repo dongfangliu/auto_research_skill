@@ -19,6 +19,35 @@ next_action:
 
 What question does this experiment answer?
 
+## Experiment Spine
+
+```yaml
+primary_question:
+largest_uncertainty:
+decision_enabled:
+minimum_test:
+baseline_or_control:
+metric:
+will_not_answer:
+stop_or_branch_rule:
+```
+
+## Metric/Baseline Readiness
+
+```text
+Readiness Verdict
+Decision: pass | revise | block | branch
+Mainline Fit:
+Metric:
+Baseline Or Control:
+Decision Thresholds:
+Aggregation Rule:
+Sanity Check:
+Ambiguous Result Rule:
+Claim Boundary:
+Minimum Next Action:
+```
+
 ## Background Facts
 
 Facts already verified and relevant to this experiment.
@@ -37,7 +66,7 @@ What changes in this experiment?
 
 ## Success Criteria
 
-What results support continuing?
+What metric result supports the decision enabled by this experiment?
 
 ## Failure Branches
 
@@ -47,6 +76,15 @@ If this fails, what explanations should be checked first?
 
 Required checks, plots, warnings, audits, or qualitative review.
 
+## Execution Preflight
+
+- Required files or artifacts:
+- Required commands or tools:
+- Expected runtime or cost:
+- Approval required before execution:
+- Stop conditions:
+- Do not change during execution:
+
 ## Commands Or Procedure
 
 Exact planned commands or manual steps.
@@ -55,7 +93,22 @@ Exact planned commands or manual steps.
 
 Files, tables, figures, logs, or notes expected.
 
+## Recording Requirements
+
+- Commands and configs to preserve:
+- Inputs and fixed settings to preserve:
+- Outputs or artifacts to link:
+- Deviations to record:
+- Failure or sanity-check signals to preserve:
+- Decision record to update:
+
 ## PI Review
 
-Recommendation and required changes before execution.
-
+```text
+Decision: approve | revise | block | branch
+Plain Reason:
+Blocking Issues:
+Required Changes:
+Overclaim Risk:
+Minimum Next Action:
+```

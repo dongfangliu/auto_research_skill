@@ -31,56 +31,73 @@ Defaults:
 - Old records: link as archives, do not migrate.
 - Local project rules outrank framework rules.
 - No automatic commit.
-- Use project language if established; otherwise Chinese for notes and English for IDs/schema fields.
+- Use the project profile's file language if explicitly established; otherwise write notes in English. Keep IDs and schema fields in English.
 
 ## Stage Navigation
 
-For `continue`, read `research/STATE.md`, active cards, and project profile. Return a short Stage Brief:
+For ordinary `continue`, `today`, `resume`, or start-session requests, use `control-loop.md` and `output-contracts.md` directly. Do not load this workflow reference unless the user asks for deeper review, branch, revise, gate, or stage transition.
 
-- active stage and item
-- verified context
+For deep review, read project profile, `research/STATE.md`, and the primary active card first. Return a Stage Brief or Daily Brief plus the deeper review scope:
+
+- mainline question
+- today's active item
+- read-now context and state-derived context
 - current risk
+- today's decision
 - recommended next action
-- files that will change, if any
+- do not do today
+- may-change files and do-not-touch files
 
-For `review`, focus on state consistency, missing evidence, stale next actions, overclaim risks, and blocked items.
+For `review`, first identify the primary active item, then focus on state consistency, missing evidence, stale next actions, overclaim risks, and blocked items.
+
+Before stage transition, experiment execution, evidence promotion, claim strengthening, or handoff resume, use the Resume Consistency Gate. If state and the active card conflict, stop and request the minimal additive fix before deeper work.
 
 For `branch`, preserve `parent` or `branch_from`, state the branch reason, and link the new item back to its source.
 
 For `revise`, append a dated revision or migration note. Do not erase the previous wording.
 
-For `gate`, use the relevant gate from `framework/workflow_gates.md` and summarize pass, fail, or branch.
+For `gate`, use the relevant gate from `framework/workflow_gates.md` and summarize `pass`, `revise`, `block`, or `branch`.
+
+Before any action that changes artifacts or research direction, apply Action Permission:
+
+- evidence promotion
+- claim strengthening
+- manuscript prose or publication-style wording
+- experiment execution
+- failure-attribution-driven stop, branch, hypothesis rejection, or negative claim
+- resolving state/handoff conflicts by editing files
+- profile policy or framework version changes
+
+Check autonomy level, profile blocked moves, state blocked moves, latest user correction, and required upstream gates. Under `L1 guided`, ask first or block high-risk actions unless the user has already approved the specific action.
 
 ## Experiment Work
 
-Before execution, create or review an experiment brief. Confirm:
+For experiment design, execution, PI review, or failure review, load `references/experiment-work.md`. Do not load it for ordinary `continue`; first return a Daily Brief, then load experiment guidance only after the user confirms design, execution, or review.
 
-- research question
-- background facts
-- fixed settings
-- new variables
-- success criteria
-- failure branches
-- diagnostics
-- commands or procedure
-- expected outputs
-- PI review status
+At the workflow level, experiment work must:
 
-After execution, write or update a decision record separating:
-
-- verified facts
-- inferences
-- limitations
-- failures or regressions
-- competing explanations
-- minimum next step
-- linked evidence
-
-New experiments normally use `student-executor` plus `pi-reviewer`. If subagents are unavailable or unauthorized, simulate those roles explicitly.
+- preserve the mainline question
+- pass the Experiment Spine before execution
+- pass Metric/Baseline Readiness before execution when measurement or comparison affects the decision
+- keep student execution and PI critique separate
+- record deviations, failures, competing explanations, and linked evidence
+- use direct PI Verdicts instead of vague review prose
 
 ## Evidence And Claim Work
 
 Evidence cards should state source, what they support, what they conflict with, strength, limitations, and reuse guidance.
+
+Before creating or upgrading an evidence card from a result, use the Result-to-Evidence Gate:
+
+- move verified facts forward without upgrading them
+- keep inferences separate from facts
+- carry limitations, deviations, sanity checks, and competing explanations
+- state what the evidence does not support
+- set allowed and forbidden claim wording
+
+Decision records, draft experiment briefs, readiness verdicts, PI opinions, and handoffs cannot directly strengthen claims. They must first support an evidence card that passes interpretation.
+
+Before promoting evidence, also apply Action Permission. Ambiguous, failed, draft, readiness-only, or claim-impacting evidence promotion should be `ask first` or `blocked` unless the project profile explicitly allows it.
 
 Claim cards must include:
 
@@ -96,6 +113,10 @@ Claim cards must include:
 
 Do not strengthen a claim beyond linked evidence. Unsupported claims stay `speculative` and must not be used as strong manuscript language.
 
+Comparative claims also require an executed, ready metric/baseline trial. A draft or `revise` readiness verdict can motivate the next experiment, but it cannot strengthen the claim.
+
+Before claim strengthening, apply Action Permission. Under `L1 guided`, claim strengthening requires explicit approval after claim and evidence gates pass.
+
 ## Manuscript Work
 
 Draft outlines from claim cards only. Before drafting:
@@ -106,6 +127,8 @@ Draft outlines from claim cards only. Before drafting:
 - avoid publication-ready phrasing unless project gates explicitly allow it
 
 Use `writing-agent`, `claim-auditor`, and `pi-reviewer` perspectives for manuscript work.
+
+Before manuscript prose or publication-style wording, apply Action Permission. Weak, speculative, or demo-only claims may support outline or limitation notes only unless the user explicitly approves a draft and the claim gates allow the wording.
 
 ## Framework Adoption Or Upgrade
 
