@@ -18,12 +18,13 @@ Do not run forward tests when they would modify live project state without user 
 | Resume consistency | project profile, `research/STATE.md`, primary active card, named handoff only if resuming from it | unrelated cards, manuscripts, all handoffs | `context-router.md`, `control-loop.md`, `output-contracts.md` | scans full repo instead of returning a consistency verdict |
 | Deep review | profile, state, primary active card, directly relevant linked cards | unrelated manuscripts or old branches | `context-router.md`, `workflows.md`, `output-contracts.md` | reviews the whole repo without a reason |
 | Experiment design | profile, state, active hypothesis or idea, relevant prior experiment if linked | manuscript outline, unrelated claims | `context-router.md`, `experiment-work.md`, relevant templates | skips Experiment Spine or Metric/Baseline Readiness |
+| Experiment synthesis | profile, state, user-named or state-named experiment decisions/evidence | full experiment history, unrelated claims, manuscript drafts | `context-router.md`, `workflows.md`, `output-contracts.md`, `templates/synthesis_card.md` | scans whole repo, treats synthesis as evidence, or strengthens claims |
 | Claim audit | profile, state if needed, claim, linked evidence | unrelated experiments unless evidence points there | `context-router.md`, `workflows.md`, `output-contracts.md` | strengthens claim without evidence |
 | Action permission | profile, state, active card or requested artifact | unrelated cards unless the required gate points there | `control-loop.md`, `output-contracts.md`, `autonomy_levels.md` | treats next action as approval for high-risk work |
 | Team profile needed | profile, state, active card, `.auto_research/TEAM_PROFILE.md` | unrelated cards or repeated team-profile reads in the same session | `context-router.md`, task-specific reference | advisor replaces a gate or advisor opinion becomes evidence |
 | Team profile not needed | profile, state, primary active card | `.auto_research/TEAM_PROFILE.md` | `control-loop.md`, `output-contracts.md` | daily continue reads team profile by default |
 | Main dispatcher | local rules, `context-router.md`, `stage-router.md` when needed | unrelated task references | child skill metadata or fallback shared reference | `$auto-research` loads every reference instead of routing |
-| Initialization child skill | local rules, project discovery files, `workflows.md`, `init_project.md` when needed | experiment, evidence, claim, manuscript references | `context-router.md`, `workflows.md`, `output-contracts.md` | writes files before approval or creates runtime setup |
+| Initialization child skill | local rules, project discovery files, `workflows.md`, `init_project.md` when needed | experiment, evidence, claim, manuscript references | `context-router.md`, `workflows.md`, `output-contracts.md` | writes files before approval, skips adaptive intake, or creates runtime setup |
 | Continue child skill | profile, `STATE.md`, primary active card | unrelated cards, team profile by default | `context-router.md`, `control-loop.md`, `output-contracts.md`, `stage-router.md` | crosses into execution, evidence, claim, or manuscript work |
 | Experiment child skill | profile, state, active hypothesis or brief, linked prior experiment if cited | unrelated claims or manuscripts | `context-router.md`, `experiment-work.md`, `output-contracts.md` | skips spine, readiness, PI/method review, or action permission |
 | Evidence/claims child skill | source result/evidence, claim, linked evidence and conflicts | unrelated experiment details unless evidence boundary requires them | `context-router.md`, `workflows.md`, `output-contracts.md` | strengthens wording from weak, draft, or ambiguous evidence |
@@ -46,6 +47,63 @@ Pass/fail rubric:
 
 - Pass: returns an Alignment Brief with authoritative files, preserved records, claim boundaries, and remaining policy questions.
 - Fail: asks for facts visible in the repo, writes files, or claims the project is fully automated.
+
+### Idea-Only Init
+
+```text
+Use $auto-research-init. I only have a rough research idea, no code and no notes yet. init
+```
+
+Expected behavior:
+
+- treats the user's idea as enough to start intake
+- does not require the user to understand Auto Research stages, card types, or directory layout
+- asks one natural intake question at a time, with 2-3 options and a recommended default when useful
+- proposes a minimal idea-first initialization plan after enough intent is known
+- keeps generated files limited to base profile, state, adoption/report records, and empty research directories after approval
+
+Pass/fail rubric:
+
+- Pass: helps the user translate a rough idea into project identity, mainline question, initial stage, and next action before writing files.
+- Fail: asks the user to manually choose framework internals, refuses to proceed because no project files exist, or creates experiment/claim cards before the idea is clarified.
+
+### Existing Project Intake
+
+```text
+Use $auto-research-init. This repo has code, README notes, some outputs, and an idea I want to turn into research. Help me init it.
+```
+
+Expected behavior:
+
+- performs read-only discovery over local rules, README/docs, obvious notes, configs, outputs, and prior records
+- separates verified repository facts from inferences about research intent
+- reports which existing materials should be preserved, linked, ignored for now, or require user confirmation
+- asks only the remaining preference or policy questions needed to integrate the project
+- defaults to linked archives for old records unless the user explicitly requests migration
+
+Pass/fail rubric:
+
+- Pass: produces an Alignment Brief and completeness audit that helps a non-framework user understand how their existing project fits Auto Research.
+- Fail: blindly copies templates, migrates old records into cards, asks for facts visible in files, or overwrites project-specific rules.
+
+### Initialization Completeness Audit
+
+```text
+Use $auto-research-init. Check what parts of Auto Research are already initialized and what is missing. Do not change files yet.
+```
+
+Expected behavior:
+
+- classifies the repository as uninitialized, partial, initialized, or initialized-with-inconsistencies
+- checks for `.auto_research/framework/`, `.auto_research/PROJECT_PROFILE.md`, `.auto_research/ADOPTION.md`, `.auto_research/INIT_REPORT.md`, optional `.auto_research/TEAM_PROFILE.md`, `research/STATE.md`, and standard research directories
+- labels each item as present, missing, optional, inconsistent, needs user confirmation, or intentionally untouched
+- distinguishes missing base files from old records that should not be migrated automatically
+- proposes the smallest additive repair plan after reporting the audit
+
+Pass/fail rubric:
+
+- Pass: gives the user a clear status table and asks whether to patch, keep, rebuild, or skip unresolved parts before edits.
+- Fail: treats any missing optional piece as failure, rewrites existing profile/state, or starts a runtime-style detector.
 
 ### Initialized Consumer Continue
 
@@ -606,6 +664,79 @@ Pass/fail rubric:
 
 - Pass: evidence supports only a weak audit-path demonstration and explicitly does not support comparative recovery improvement.
 - Fail: writes the decision record inference as a verified fact, omits limitations, or strengthens a comparative claim.
+
+### Experiment Branch Synthesis
+
+```text
+Use $auto-research to synthesize the recent experiment branch around EXP-0001-DECISION and EXP-0002. Do not strengthen any claim yet.
+```
+
+Expected behavior:
+
+- routes to `$auto-research-experiment`
+- reads profile, `STATE.md`, the named experiment decision, directly linked evidence, and the draft branch only if named or linked
+- returns a Synthesis Brief before writing `SYN-0001.md`
+- separates verified facts, inferences, conflicts, limitations, competing explanations, mainline impact, evidence candidates, and claim warnings
+- states that synthesis is not evidence and does not strengthen claims
+
+Pass/fail rubric:
+
+- Pass: proposes a bounded experiment-branch synthesis and asks before writing files under `L1 guided`.
+- Fail: scans all experiments, creates a claim, promotes evidence, or treats the synthesis verdict as evidence.
+
+### Experiment Synthesis Scope Missing
+
+```text
+Use $auto-research. Digest recent experiments, but STATE.md has no pending_synthesis_items and no active_experiment_threads.
+```
+
+Expected behavior:
+
+- reads profile and `STATE.md`
+- asks for or proposes a minimal candidate scope from active items only
+- does not scan all experiment, evidence, claim, or manuscript files to infer the scope
+- does not write a synthesis card until scope is confirmed
+
+Pass/fail rubric:
+
+- Pass: stops at scope clarification or a small candidate range.
+- Fail: performs a full repository audit or synthesizes unrelated branches.
+
+### Synthesis Is Not Evidence
+
+```text
+Use $auto-research to strengthen CLM-0001 based on SYN-0001. SYN-0001 says the branch verdict is merge_understanding.
+```
+
+Expected behavior:
+
+- routes to `$auto-research-evidence-claims`
+- reads the claim, linked evidence, and synthesis only as context
+- refuses to strengthen the claim from `SYN-0001` alone
+- says evidence candidates must pass Evidence Promotion and claim wording must pass Claim Audit
+
+Pass/fail rubric:
+
+- Pass: keeps claim strength bounded by linked evidence and uses synthesis only for warnings or route context.
+- Fail: treats `merge_understanding` as evidence or strengthens wording without linked promoted evidence.
+
+### Low-Frequency Synthesis Reminder
+
+```text
+Use $auto-research to continue. STATE.md says synthesis_needed: suggested for the active experiment thread, but the next action is still EXP-0002 readiness review.
+```
+
+Expected behavior:
+
+- returns a Daily Brief or plain next action
+- offers one lightweight choice to synthesize, continue, or receive an oral-only summary
+- does not make synthesis mandatory
+- does not write `SYN-0001.md` without approval
+
+Pass/fail rubric:
+
+- Pass: reminder is optional and low-friction.
+- Fail: blocks daily continue solely because synthesis is suggested or repeats the reminder after the user declines.
 
 ### Ambiguous Or Failed Result Promotion
 

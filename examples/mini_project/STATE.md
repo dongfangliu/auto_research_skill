@@ -2,7 +2,7 @@
 
 ```yaml
 project_id: mini_project
-framework_commit: mvp-0.13-example
+framework_commit: mvp-0.15-example
 updated_at: 2026-05-26
 active_stage: experiment_design
 active_items:
@@ -30,11 +30,17 @@ handoff_to_read_if_resuming: handoffs/HANDOFF-0001.md
 known_stale_links: []
 state_consistency: pass
 last_mainline_check: 2026-05-26
+latest_synthesis: SYN-0001
+pending_synthesis_items: []
+active_experiment_threads:
+  - recovery_quality_branch
+synthesis_needed: completed
+mainline_impact_from_latest_synthesis: Structured files show a weak audit path, but recovery-quality metric and baseline readiness remain the main risk.
 ```
 
 ## Snapshot
 
-The project started with an idea that structured research cards may help agents resume interrupted work. A first mock experiment partially supported the workflow but exposed an unmeasured failure mode: recovery quality needs an explicit metric. This generated `IDEA-0002`, `HYP-0002`, and a draft `EXP-0002` readiness review.
+The project started with an idea that structured research cards may help agents resume interrupted work. A first mock experiment partially supported the workflow but exposed an unmeasured failure mode: recovery quality needs an explicit metric. `SYN-0001` consolidates that branch as weak audit-path understanding and keeps `EXP-0002` readiness as the active risk.
 
 ## Mainline
 
@@ -52,6 +58,11 @@ The project started with an idea that structured research cards may help agents 
 - Known stale links: none.
 - State consistency: pass for `EXP-0002` readiness review; handoff is needed only for explicit handoff resume.
 - Last mainline check: 2026-05-26, mvp-0.9 action permission example.
+- Latest synthesis: `syntheses/SYN-0001.md`
+- Pending synthesis items: none.
+- Active experiment threads: `recovery_quality_branch`
+- Synthesis needed: completed for the first mock recovery branch.
+- Mainline impact from latest synthesis: structured files show a weak audit path, but metric and baseline readiness remain the main risk.
 
 ## Daily Continue Expected Output
 
@@ -60,7 +71,7 @@ Daily Brief
 Mainline: Can the next recovery-quality experiment pass metric/baseline readiness before execution?
 Today's Active Item: EXP-0002
 Read Now: PROJECT_PROFILE.md, STATE.md, experiments/EXP-0002_brief.md
-State-Derived Context: EXP-0001 is a weak demonstration; IDEA-0002 and HYP-0002 define the recovery-quality branch; CLM-0001 must stay weak and outline-only.
+State-Derived Context: SYN-0001 consolidates EXP-0001 as weak audit-path evidence; IDEA-0002 and HYP-0002 define the recovery-quality branch; CLM-0001 must stay weak and outline-only.
 Current Risk: A trial or claim could proceed before metric/baseline readiness passes.
 Today's Decision: Decide whether EXP-0002 readiness is pass, revise, block, or branch.
 Recommended Next Action: Review the Readiness Verdict and resolve rubric anchors, baseline construction, and ambiguity handling.
@@ -125,6 +136,13 @@ Minimum Next Action: Method-specialist review of rubric anchors and baseline con
 | HYP-0002 | IDEA-0002 | Metric idea needed a falsifiable readiness hypothesis. |
 | EXP-0002 | HYP-0002 | Hypothesis needs metric/baseline readiness review before execution. |
 | HANDOFF-0001 | EXP-0002 | User correction must persist into the next readiness-review session. |
+| SYN-0001 | EXP-0001-DECISION | Consolidates the first recovery branch as weak audit-path understanding and keeps readiness work open. |
+
+## Experiment Threads And Synthesis
+
+| Thread | Scope | Latest Synthesis | Synthesis Needed | Mainline Impact |
+| --- | --- | --- | --- | --- |
+| recovery_quality_branch | EXP-0001-DECISION, EVD-0001, IDEA-0002, HYP-0002, EXP-0002 | SYN-0001 | completed | Weak audit path is established; metric/baseline readiness remains unresolved. |
 
 ## Evidence And Claim Readiness
 
@@ -153,3 +171,4 @@ Ready only for a demonstration outline, not a publication draft.
 - 2026-05-26 resume consistency review: state and `EXP-0002` agree that the next action is readiness review, not execution.
 - 2026-05-26 action permission review: under L1 guided, `EXP-0002` execution, claim strengthening, and manuscript prose require approval and are blocked today by readiness state.
 - 2026-05-26 team profile example: `TEAM_PROFILE.md` adds `advisor:recovery-evaluator` for readiness review only; ordinary daily continue should not read it by default.
+- 2026-05-26 experiment synthesis example: `SYN-0001` consolidates the first recovery branch, marks the branch verdict as `keep_open`, and does not strengthen `CLM-0001`.

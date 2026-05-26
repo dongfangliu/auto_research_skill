@@ -1,6 +1,6 @@
 ---
 name: auto-research
-description: Token-light, high-control research harness for file-first, evidence-bound scientific work. Use when the user explicitly invokes $auto-research, $auto research, Auto Research mode, or asks Codex to use the Auto Research framework for initializing or continuing a research project, designing, executing, or reviewing experiments, analyzing failures, handling research feedback, binding evidence to claims, auditing claims, drafting manuscript outlines, or adopting/upgrading the Auto Research framework. Acts as the compatibility entry and dispatcher for the auto-research-init, auto-research-continue, auto-research-experiment, auto-research-evidence-claims, and auto-research-maintainer harness skills when they are available.
+description: Token-light, high-control research harness for file-first, evidence-bound scientific work. Use when the user explicitly invokes $auto-research, $auto research, Auto Research mode, or asks Codex to use the Auto Research framework for initializing or continuing a research project, designing, executing, reviewing, or synthesizing experiments, analyzing failures, handling research feedback, binding evidence to claims, auditing claims, drafting manuscript outlines, or adopting/upgrading the Auto Research framework. Acts as the compatibility entry and dispatcher for the auto-research-init, auto-research-continue, auto-research-experiment, auto-research-evidence-claims, and auto-research-maintainer harness skills when they are available.
 ---
 
 # Auto Research
@@ -33,7 +33,7 @@ Use this skill as the session activator and compatibility entry. If the child sk
 | --- | --- | --- |
 | Initialize, adopt, repair a partial setup, or plan team calibration | `$auto-research-init` | `references/workflows.md`, then `prompts/init_project.md` when needed |
 | Continue, resume, daily brief, review, branch, revise, gate, or stage navigation | `$auto-research-continue` | `references/control-loop.md`, `references/workflows.md`, `references/output-contracts.md` |
-| Design, review, execute, or analyze experiments and failures | `$auto-research-experiment` | `references/experiment-work.md`, relevant templates |
+| Design, review, execute, synthesize, or analyze experiments and failures | `$auto-research-experiment` | `references/experiment-work.md`, `references/workflows.md`, relevant templates |
 | Promote evidence, audit claims, bound wording, or check manuscript readiness | `$auto-research-evidence-claims` | `references/workflows.md`, `references/output-contracts.md` |
 | Maintain framework docs, skill files, forward tests, examples, or adoption/upgrade guidance | `$auto-research-maintainer` | `references/forward-tests.md`, `references/failure-modes.md` |
 
@@ -77,7 +77,8 @@ Start with `references/context-router.md` for repo classification, authority ord
 | Initialize or adopt Auto Research in a project | `references/workflows.md`, then framework `prompts/init_project.md` if available |
 | Daily continue, today, resume, start session, or Daily Brief | `references/control-loop.md` and `references/output-contracts.md` |
 | Deep review, branch, revise, gate, or stage transition | `references/workflows.md` |
-| Design, execute, or review experiments, including failures | `references/experiment-work.md` and relevant templates |
+| Design, execute, synthesize, or review experiments, including failures | `references/experiment-work.md`, `references/workflows.md`, and relevant templates |
+| Digest or consolidate an experiment branch | `references/workflows.md`, `references/output-contracts.md`, and `templates/synthesis_card.md` |
 | Analyze evidence, failures, claims, or manuscript outline | `references/workflows.md` and `references/output-contracts.md` |
 | User feedback, mainline drift, context budget, or autonomy decisions | `references/control-loop.md` and `references/output-contracts.md` |
 | Decide what to say back to the user | `references/output-contracts.md` |

@@ -20,6 +20,11 @@ handoff_to_read_if_resuming:
 known_stale_links:
 state_consistency:
 last_mainline_check:
+latest_synthesis:
+pending_synthesis_items:
+active_experiment_threads:
+synthesis_needed:
+mainline_impact_from_latest_synthesis:
 ```
 
 ## Snapshot
@@ -42,6 +47,11 @@ Briefly describe where the project stands.
 - Known stale links:
 - State consistency:
 - Last mainline check:
+- Latest synthesis:
+- Pending synthesis items:
+- Active experiment threads:
+- Synthesis needed:
+- Mainline impact from latest synthesis:
 
 ## Active Items
 
@@ -60,6 +70,12 @@ Briefly describe where the project stands.
 | Child | Branch From | Reason |
 | --- | --- | --- |
 |  |  |  |
+
+## Experiment Threads And Synthesis
+
+| Thread | Scope | Latest Synthesis | Synthesis Needed | Mainline Impact |
+| --- | --- | --- | --- | --- |
+|  |  |  | none \| suggested \| requested \| completed |  |
 
 ## Evidence And Claim Readiness
 

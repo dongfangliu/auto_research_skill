@@ -131,6 +131,21 @@ After execution, check:
 - What remains unknown is explicit.
 - Minimum next step is explicit.
 
+## Experiment Synthesis Gate
+
+Before creating or using an experiment synthesis card, check:
+
+- The synthesis scope includes at least one experiment decision record or experiment-derived evidence card.
+- Included records are named explicitly; do not infer scope from a full-repository scan.
+- Verified facts, inferences, conflicts, limitations, and competing explanations remain separate.
+- Mainline impact is stated without upgrading evidence strength.
+- Evidence candidates are marked as candidates only.
+- Claim warnings name unsupported or weakened wording.
+- Branch verdict is one of `merge_understanding`, `keep_open`, `branch_again`, `park`, or `stop`.
+- Recommended next action does not skip Evidence Promotion, Claim Audit, readiness, or action permission.
+
+Experiment synthesis is not evidence and cannot strengthen claims directly.
+
 ## Result-to-Evidence Gate
 
 Before a decision record, literature note, artifact, or result is turned into an evidence card or used by a claim, check:
@@ -139,6 +154,7 @@ Before a decision record, literature note, artifact, or result is turned into an
 - Metric, baseline/control, threshold, aggregation, sanity check, and deviation interpretation are carried forward when relevant.
 - Ambiguous, partial, failed, or deviated results are not written as positive support.
 - Draft briefs, readiness verdicts, handoffs, PI opinions, and unexecuted plans are not treated as evidence.
+- Experiment synthesis cards are not treated as evidence; only their named source records can be promoted.
 - Evidence strength is no stronger than the source record permits.
 - The evidence states what it supports and what it does not support.
 - Claim-use boundary and forbidden wording are explicit.

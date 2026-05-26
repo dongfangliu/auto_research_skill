@@ -13,6 +13,16 @@ Auto Research treats research as a recoverable, branching state machine rather t
 7. `claim_building`: bind candidate claims to evidence and allowed wording.
 8. `manuscript_drafting`: assemble outline or draft from claim ledger only.
 
+## Experiment Branch Synthesis
+
+Experiment branch synthesis is a user-triggered post-experiment action, not a new lifecycle stage. Use it after `result_analysis` and before claim strengthening when a bounded experiment thread needs to be digested like a PR or merge summary.
+
+- Applicable stage: experiment-related `result_analysis`, before evidence candidates are promoted or claims are strengthened.
+- Trigger condition: the user asks to digest, synthesize, consolidate, or summarize a recent experiment branch; or the agent reaches a low-frequency reminder point such as a long experiment thread, conflicting results, unclear mainline impact, or pre-claim/manuscript work.
+- Failure risk: treating synthesis as evidence, using it to strengthen claims directly, or making it a generic project summary detached from experiment records.
+
+An experiment synthesis must bind to at least one experiment decision record or experiment-derived evidence card. It may recommend evidence promotion, claim audit, another experiment branch, parking a branch, or stopping a line, but it cannot replace the gates for those actions.
+
 ## Stage Actions
 
 Every stage supports five actions:
@@ -40,4 +50,3 @@ Before moving to the next stage, record:
 - Main risk or uncertainty.
 - Recommended next action.
 - Whether PI/auditor/specialist review is required.
-

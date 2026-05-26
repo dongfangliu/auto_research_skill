@@ -98,6 +98,18 @@ Risk: treating an experiment brief, readiness verdict, handoff, PI opinion, or u
 
 Guardrail: use the Result-to-Evidence Gate. Promote only verified facts with limitations and claim-use boundaries. Ambiguous, failed, draft, or readiness-only records cannot become positive evidence.
 
+## Synthesis As Evidence
+
+Risk: treating an experiment synthesis card as evidence or using its branch verdict to strengthen a claim.
+
+Guardrail: use synthesis as a PR-style experiment-thread digest only. Promote named source facts through Evidence Promotion, then audit claims against linked evidence.
+
+## Noisy Synthesis Reminders
+
+Risk: reminding the user to synthesize on every daily continue and turning consolidation into workflow noise.
+
+Guardrail: remind only at low-frequency key points: long experiment thread, conflicting results, unclear mainline impact, pre-claim/manuscript work, or stale/missing synthesis for the active experiment thread.
+
 ## Metric/Baseline Readiness Gap
 
 Risk: running an experiment or strengthening a comparative claim when the metric, baseline/control, thresholds, or ambiguity rule cannot support the decision.
@@ -162,7 +174,19 @@ Guardrail: record framework commits in `ADOPTION.md`, summarize changes, and add
 
 Risk: copying templates into a project before understanding it.
 
-Guardrail: produce an Alignment Brief first, confirm project identity and policy choices, then present an implementation plan before writing files.
+Guardrail: produce an Alignment Brief and Completeness Audit first, confirm project identity and policy choices, then present an implementation plan before writing files.
+
+## Framework-First Init Questions
+
+Risk: the user says `init` with only an idea or messy project, and the agent asks them to choose Auto Research internals such as gates, card schemas, or role names before clarifying intent.
+
+Guardrail: treat initialization as adaptive intake. Ask natural questions about the user's goal, first decision, old-record policy, and desired level of structure, then map those answers to framework artifacts.
+
+## Missing-File Tunnel Vision
+
+Risk: a partial setup is treated as broken just because optional files such as `TEAM_PROFILE.md` are absent, or a few present files make the agent miss inconsistent state.
+
+Guardrail: run a Completeness Audit with explicit labels: `present`, `missing`, `optional`, `inconsistent`, `needs_confirmation`, and `intentionally_untouched`. Patch only approved required gaps.
 
 ## Premature Manuscript Mode
 

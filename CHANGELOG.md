@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Added experiment branch synthesis as a PR-style post-experiment consolidation layer with `templates/synthesis_card.md`, `Synthesis Brief`, synthesis state pointers, routing rules, low-frequency reminders, and mini-project `SYN-0001`.
+- Clarified that synthesis cards are not evidence, cannot strengthen claims, and must bind to experiment decisions or experiment-derived evidence.
+- Expanded initialization into an adaptive intake flow for idea-only users, existing projects with scattered files, partial setups, and inconsistent initialized repos.
+- Added Completeness Audit guidance and output contract so `init` can report which framework pieces are present, missing, optional, inconsistent, need confirmation, or should be intentionally untouched.
+- Added bilingual README usage guidance for Codex, Claude Code, idea-only init, existing-project intake, and post-init daily use.
+- Updated initialization prompt, guide, adoption guide, report template, init skill, workflow/context references, failure modes, README, and forward tests while preserving the file-first MVP boundary.
+
 ## mvp-0.14 - Harness skill suite
 
 - Added five thin child skills: `auto-research-init`, `auto-research-continue`, `auto-research-experiment`, `auto-research-evidence-claims`, and `auto-research-maintainer`.

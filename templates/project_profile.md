@@ -73,6 +73,7 @@ Moves that agents should not take without explicit approval:
 
 - Experiment execution:
 - Evidence promotion:
+- Experiment synthesis:
 - Claim strengthening:
 - Manuscript prose:
 - Profile or framework changes:

@@ -5,7 +5,7 @@ project_id: mini_project
 project_name: Research Continuity Mini Project
 autonomy_level: L1 guided
 default_language: English
-framework_commit: mvp-0.13-example
+framework_commit: mvp-0.15-example
 team_profile: TEAM_PROFILE.md
 team_profile_use: needed_only
 updated_at: 2026-05-26
@@ -37,6 +37,7 @@ Daily continue:
 Deep review or gate:
 
 - Relevant card files linked from `STATE.md`
+- Latest synthesis when `STATE.md` names one and the task concerns experiment branch understanding, evidence candidates, or claim warnings.
 - Framework lifecycle, state model, and workflow gates when needed
 
 ## Artifact Policy
@@ -71,6 +72,7 @@ Use manual IDs. Do not rewrite earlier cards; append revision notes.
 - Evidence promotion: do not promote draft briefs, readiness verdicts, or handoffs as evidence.
 - Claim strengthening: do not strengthen `CLM-0001` from weak evidence.
 - Manuscript prose: do not write publication-ready language from current evidence.
+- Experiment synthesis: do not treat `SYN-0001` as evidence or claim support.
 - Profile or framework changes: ask before changing project policy or framework version.
 - Specialist or multi-agent work: use only for experiment/method/claim gates, not ordinary organization.
 
@@ -80,7 +82,7 @@ At least moderate evidence is required before writing a real paper draft. This e
 
 ## Profile Update Triggers
 
-Update if a new card type is required, recovery metrics become central, or the team profile path, use rule, or advisor boundary changes.
+Update if recovery metrics become central, synthesis use rules change, or the team profile path, use rule, or advisor boundary changes.
 
 ## Persistent Feedback Rules
 

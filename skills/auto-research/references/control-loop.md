@@ -36,7 +36,7 @@ Use for daily brief, today, continue, resume, start session, or when active item
 Daily open:
 
 1. Read project profile, `research/STATE.md`, and the primary active card only.
-2. Confirm `mainline_question`, `primary_active_item`, `primary_active_path`, `primary_decision`, `current_risk`, `next_recommended_action`, `parking_lot`, `last_user_correction`, and `last_mainline_check`.
+2. Confirm `mainline_question`, `primary_active_item`, `primary_active_path`, `primary_decision`, `current_risk`, `next_recommended_action`, `parking_lot`, `last_user_correction`, `last_mainline_check`, and synthesis pointers if present.
 3. Run a Resume Consistency check: primary card ID and status, card `next_action`, state `next_recommended_action`, blocked moves, last user correction, and any latest failure/result attribution must not contradict each other.
 4. If several active items exist, choose one primary active item that reduces the largest current risk. Put the rest in parking lot, paused, or a branch gate.
 5. If state is insufficient, stale, or conflicts with the primary active card, report `Revise STATE first`, name the missing or conflicting field, and suggest a `STATE.md` or active-card update instead of scanning the full repository.
@@ -45,10 +45,16 @@ Daily open:
 Daily close:
 
 1. State whether `STATE.md` needs an additive update.
-2. If yes, name the fields to update: mainline, primary active item, current risk, next action, parking lot, or last user correction.
+2. If yes, name the fields to update: mainline, primary active item, current risk, next action, parking lot, synthesis pointers, or last user correction.
 3. Keep side issues in parking lot unless they need a branch gate.
 
 Daily Brief is an output contract, not a persistent card. It should not start experiments, strengthen claims, or draft manuscript text.
+
+Low-frequency synthesis reminder:
+
+- If `synthesis_needed: suggested`, or the active experiment thread has multiple decisions, conflicting results, unclear mainline impact, or stale `latest_synthesis`, offer one short choice to synthesize, continue, or give an oral-only summary.
+- Do not repeat the reminder if the user declines unless new experiment results or a new claim/manuscript risk boundary appears.
+- A reminder is not permission to write `SYN-0000.md`; under `L1 guided`, ask before writing files.
 
 ## Resume Consistency
 

@@ -12,6 +12,8 @@ For a daily continue, read only:
 
 Do not read `TEAM_PROFILE.md` for ordinary daily continue. Read it only for team/advisor requests, experiment readiness review, claim audit, or manuscript outline review.
 
+Read `syntheses/SYN-0001.md` only when the task asks for experiment branch synthesis, evidence candidates, claim warnings, or when `STATE.md` says the latest synthesis is needed to recover recent experiment-thread understanding.
+
 For full audit, read in this order:
 
 1. `PROJECT_PROFILE.md`
@@ -28,5 +30,6 @@ For full audit, read in this order:
 12. `experiments/EXP-0002_brief.md`
 13. `handoffs/HANDOFF-0001.md`
 14. `evidence/EVD-0001.md`
-15. `claims/CLM-0001.md`
-16. `manuscripts/OUTLINE-0001.md`
+15. `syntheses/SYN-0001.md`
+16. `claims/CLM-0001.md`
+17. `manuscripts/OUTLINE-0001.md`

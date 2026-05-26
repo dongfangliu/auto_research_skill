@@ -13,7 +13,7 @@ This file routes work. It does not replace `framework/lifecycle.md`, `framework/
 | `hypothesis_design` | `$auto-research-continue` | profile, `STATE.md`, active idea or hypothesis card | Hypothesis Gate before experiment design | Stage Brief or Gate Review | Creating an experiment from an unfalsifiable or weakly scoped hypothesis. |
 | `experiment_design` | `$auto-research-experiment` | profile, `STATE.md`, active hypothesis or experiment brief | Experiment Spine and Metric/Baseline Readiness | Readiness Verdict or PI Verdict | Writing procedure details before the mainline question, metric, baseline, and stop rule are ready. |
 | `experiment_execution` | `$auto-research-experiment` | approved brief, `STATE.md`, required procedure files | Resume Consistency, readiness pass, and Action Permission | Action Permission Verdict or Execution Report | Treating a recommended next action as execution approval or crossing into evidence/claim work. |
-| `result_analysis` | `$auto-research-evidence-claims` | source decision/result, `STATE.md`, linked evidence only when needed | Decision Record Gate and Result-to-Evidence Gate | Evidence Promotion Verdict or Gate Review | Turning ambiguous, failed, or deviated results into positive evidence. |
+| `result_analysis` | `$auto-research-evidence-claims` | source decision/result, `STATE.md`, linked evidence only when needed | Decision Record Gate, Result-to-Evidence Gate, or Post-Experiment Synthesis when requested | Evidence Promotion Verdict, Synthesis Brief, or Gate Review | Turning ambiguous, failed, deviated, or merely synthesized results into positive evidence. |
 | `claim_building` | `$auto-research-evidence-claims` | claim card, linked evidence, conflicting evidence | Claim Gate and Action Permission before strengthening | Claim Audit | Strengthening wording beyond linked evidence or ignoring forbidden wording. |
 | `manuscript_drafting` | `$auto-research-evidence-claims` | claim ledger, manuscript outline, linked evidence summaries | Manuscript Gate and Action Permission before prose | Claim Audit or Gate Review | Drafting publication-style prose from weak, speculative, or missing claims. |
 
@@ -26,6 +26,17 @@ This file routes work. It does not replace `framework/lifecycle.md`, `framework/
 | `branch` | `$auto-research-continue` | Preserve `parent` or `branch_from` and state the branch reason. | Missing provenance or unclear branch decision. | Losing source context or rewriting history. |
 | `revise` | `$auto-research-continue` | Append a dated revision or migration note. | Request would erase previous wording. | Overwriting historical cards. |
 | `gate` | Child skill for the current stage | Use the specific gate from `framework/workflow_gates.md`. | Decision is `revise`, `block`, or `branch`. | Treating a gate as vague advice instead of a decision. |
+
+## Experiment Synthesis Routes
+
+Route requests such as `digest recent experiments`, `synthesize this experiment branch`, `consolidate this batch`, or `summarize the recent experiment thread` to `$auto-research-experiment` for scope confirmation and Synthesis Brief.
+
+- Minimum files: profile, `STATE.md`, and user-named or state-named experiment decisions/evidence.
+- Stop condition: scope is unclear, no experiment decision or experiment-derived evidence is included, or the user has not approved writing `SYN-0000.md`.
+- Output contract: Synthesis Brief.
+- Failure risk: scanning the full repository, turning synthesis into evidence, or strengthening claims without Claim Audit.
+
+If the user asks whether a synthesis can strengthen a claim, route the next action to `$auto-research-evidence-claims` and use Claim Audit. The synthesis may provide context, evidence candidates, and warnings only.
 
 ## Maintenance Route
 

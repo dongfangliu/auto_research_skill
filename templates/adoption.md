@@ -22,7 +22,7 @@ Why this project adopted Auto Research.
 
 ## Local Integration
 
-Where the project keeps its profile, optional team profile, state, cards, outputs, and manuscript materials.
+Where the project keeps its profile, optional team profile, state, cards, syntheses, outputs, and manuscript materials.
 
 ## Upgrade History
 

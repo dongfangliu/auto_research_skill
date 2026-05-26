@@ -13,6 +13,12 @@ Classify the current repository before acting:
 
 If more than one classification seems plausible, state the evidence and use the safest interpretation before writing files.
 
+For initialization, also identify the intake shape when useful:
+
+- `idea_only`: the user has a rough research idea but there are no useful project files yet.
+- `existing_project_intake`: the repo has code, docs, notes, outputs, notebooks, drafts, or logs that should inform setup.
+- `initialized_with_inconsistencies`: base Auto Research files exist but paths, IDs, submodule state, or ownership boundaries conflict.
+
 ## Authority Order
 
 Use this priority order:
@@ -42,6 +48,7 @@ For `initialized_consumer_repo`, read:
 - `research/STATE.md`
 - `.auto_research/ADOPTION.md` when adoption or upgrade matters
 - active cards listed by `STATE.md`
+- latest synthesis only when `STATE.md` names it and the task depends on experiment-thread understanding, evidence candidates, or claim warnings
 - `.auto_research/TEAM_PROFILE.md` only when a high-risk gate or explicit team request needs it
 - handoff packet only when the user asks to resume from it, `STATE.md` names it for resume, or a direct consistency conflict points to it
 - framework files only when needed for a gate, template, or workflow rule
@@ -57,6 +64,7 @@ For `uninitialized_project`, read:
 
 - `AGENTS.md`, README, docs, notes, experiment logs, outputs, configs, and manuscript drafts that identify research context
 - `.gitmodules` only when framework adoption is possible
+- if no useful files exist, use the user's idea as the first context source and ask short intake questions
 
 ## Task Routing Matrix
 
@@ -68,9 +76,11 @@ Use this to preserve token efficiency:
 | Handoff resume | daily files plus named handoff | directly conflicting decision/card | handoff conflicts with state or blocked moves |
 | Experiment design/review | profile, state, active idea/hypothesis/brief | team profile when role background or advisor input matters; linked prior experiment only when cited | missing spine or readiness |
 | Experiment execution | approved brief, state, required procedure files | team profile when execution approval depends on project-specific role policy; method-specialist output if required | permission not approved or readiness not pass |
+| Experiment branch synthesis | profile, `STATE.md`, user-named experiments/decisions/evidence or state-named pending synthesis items | directly linked decisions, evidence, and branch-source idea/hypothesis | Synthesis Brief returned before writing `SYN` or changing claims |
 | Result/evidence work | source decision/evidence, linked claim if claim-impacting | source experiment only if interpretation is unclear | promotion verdict not pass/hold as appropriate |
 | Claim audit | claim and linked evidence | team profile when claim review needs project-specific advisor background; linked decision only if evidence boundary is unclear | missing evidence or promotion boundary |
 | Manuscript outline | claim cards approved for outline and linked evidence summaries | team profile when writing/review roles need project-specific background; manuscript outline file | weak/speculative claim needs stronger wording |
+| Initialization/adoption | local rules, obvious project docs or user idea, existing `.auto_research/` files, `.gitmodules` when relevant | `framework/initialization.md` or `prompts/init_project.md` when exact setup rules are needed | Alignment Brief and Completeness Audit returned before file writes |
 | Team calibration | profile, state or project docs, relevant templates | existing team profile if present | user declines calibration or policy would store real project state in framework |
 | Framework maintenance | `AGENTS.md`, relevant framework/skill/template/example files | README/changelog when user-visible | request would store real project state |
 
@@ -81,6 +91,7 @@ If `TEAM_PROFILE.md` has already been read in the same continuous session and th
 Do not ask the user for facts that can be discovered from files. Ask only about:
 
 - research direction or current priority
+- first decision or main uncertainty for idea-only intake
 - intended Auto Research role
 - autonomy level
 - old-record policy
@@ -108,3 +119,4 @@ If `STATE.md` points to a missing primary card, the card ID does not match `prim
 - `.auto_research/ADOPTION.md`: framework source, commit, upgrades, and migration notes.
 - `.auto_research/INIT_REPORT.md`: initialization discovery, decisions, assumptions, and created files.
 - `research/`: real research state, cards, evidence, claims, and manuscript artifacts.
+- `research/syntheses/`: experiment branch synthesis cards. These summarize bounded experiment threads and are not evidence or claims.

@@ -20,6 +20,7 @@ Then create local project files outside the submodule:
   PROJECT_PROFILE.md
   TEAM_PROFILE.md     # optional project-specific role/advisor profile
   ADOPTION.md
+  INIT_REPORT.md      # initialization discovery, intake, and audit record
 research/
   STATE.md
   ideas/
@@ -27,6 +28,7 @@ research/
   hypotheses/
   experiments/
   evidence/
+  syntheses/
   claims/
   manuscripts/
 ```
@@ -37,6 +39,7 @@ research/
 - `.auto_research/PROJECT_PROFILE.md`: project-specific rules.
 - `.auto_research/TEAM_PROFILE.md`: optional project-specific role adaptations and advisory roles.
 - `.auto_research/ADOPTION.md`: framework adoption and upgrade record.
+- `.auto_research/INIT_REPORT.md`: initialization discovery, user decisions, assumptions, and completeness audit.
 - `research/`: actual project state and artifacts.
 
 ## Upgrade Workflow

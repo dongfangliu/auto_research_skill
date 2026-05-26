@@ -32,6 +32,7 @@ Linked evidence cards.
 - Evidence must come from:
 - Promotion status required:
 - Direct experiment or readiness use allowed:
+- Synthesis use allowed:
 - Claim impact allowed:
 
 ## Conflicting Evidence

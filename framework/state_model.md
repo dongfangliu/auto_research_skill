@@ -56,6 +56,18 @@ next_action:
 
 `STATE.md` should summarize; it should not replace detailed cards.
 
+## Synthesis Pointers
+
+Experiment synthesis cards summarize a bounded experiment thread after one or more experiment decisions or experiment-derived evidence cards exist. `STATE.md` should keep only pointers and short status fields:
+
+- `latest_synthesis`: most recent `SYN-0000` card relevant to the current mainline.
+- `pending_synthesis_items`: experiment decisions or evidence that may need synthesis.
+- `active_experiment_threads`: current experiment branches or batches.
+- `synthesis_needed`: `none`, `suggested`, `requested`, or `completed`.
+- `mainline_impact_from_latest_synthesis`: one-sentence impact summary.
+
+Synthesis cards do not replace evidence cards, claim cards, or detailed experiment records.
+
 ## ID Policy
 
 MVP uses manually assigned IDs:
@@ -66,8 +78,8 @@ MVP uses manually assigned IDs:
 - `HYP-0001`
 - `EXP-0001`
 - `EVD-0001`
+- `SYN-0001`
 - `CLM-0001`
 - `OUTLINE-0001`
 
 If manual IDs become error-prone, add a lightweight CLI later.
-

@@ -19,6 +19,28 @@ Initialization Status
 Remaining Questions
 ```
 
+## Completeness Audit
+
+Use with initialization, adoption, repair, or init review before proposing file changes:
+
+```text
+Completeness Audit
+Overall Status: uninitialized | partial | initialized | inconsistent
+Framework Source
+Project Profile
+Adoption Record
+Init Report
+Team Profile
+Research State
+Research Directories
+Existing Records
+Local Rules
+Recommended Repair
+Needs User Confirmation
+```
+
+Allowed item labels: `present`, `missing`, `optional`, `inconsistent`, `needs_confirmation`, `intentionally_untouched`.
+
 ## Stage Brief
 
 Use when continuing or reviewing a project:
@@ -167,6 +189,39 @@ Minimum Next Action
 ```
 
 If the result is not `pass`, stop at the minimum next action. Do not continue into experiment execution, strong claim language, or manuscript drafting.
+
+## Synthesis Brief
+
+Use when the user asks to digest, consolidate, or synthesize a recent experiment branch, or when a low-frequency reminder suggests an experiment branch may need consolidation:
+
+```text
+Synthesis Brief
+Scope
+Included Records
+Source Boundary
+Verified Facts
+Inferences
+Conflicts
+Limitations
+Competing Explanations
+Hypothesis Impact
+Mainline Impact
+Evidence Candidates
+Claim Warnings
+Branch Verdict
+Recommended Next Action
+Write Permission Needed
+```
+
+`Branch Verdict` values:
+
+- `merge_understanding`
+- `keep_open`
+- `branch_again`
+- `park`
+- `stop`
+
+A Synthesis Brief does not promote evidence, strengthen claims, or draft manuscript wording. It may recommend those downstream reviews.
 
 ## Role Report
 

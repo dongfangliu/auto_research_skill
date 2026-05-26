@@ -1,6 +1,6 @@
 # Experiment Work
 
-Use this reference only for experiment design, execution, failure review, and PI review. Keep ordinary `continue` and claim work on `workflows.md`.
+Use this reference only for experiment design, execution, failure review, PI review, and experiment-thread details needed by synthesis. Keep ordinary `continue` and claim work on `workflows.md`.
 
 ## Experiment Spine First
 
@@ -135,6 +135,18 @@ Before creating or updating an evidence card from an execution result, issue an 
 - minimum next action
 
 If the verdict is `hold`, `revise`, `block`, or `branch`, do not strengthen a claim from that result. A readiness verdict, handoff, draft brief, or PI opinion can explain a plan or boundary, but it is not evidence.
+
+## Experiment Branch Synthesis
+
+When the user asks to digest or consolidate an experiment branch, use `workflows.md` for the Post-Experiment Synthesis workflow and `output-contracts.md` for Synthesis Brief. Use this reference only to interpret experiment-specific scope, readiness, deviations, failures, and source boundaries.
+
+Synthesis must:
+
+- include at least one experiment decision record or experiment-derived evidence card
+- keep verified facts separate from inferences and branch verdicts
+- preserve failed, ambiguous, or conflicting results
+- state evidence candidates as candidates only
+- route any claim impact to Evidence Promotion and Claim Audit
 
 ## PI Verdict
 

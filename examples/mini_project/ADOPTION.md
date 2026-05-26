@@ -2,7 +2,7 @@
 
 ```yaml
 framework_source: auto_research local example
-framework_commit: mvp-0.13-example
+framework_commit: mvp-0.15-example
 adopted_at: 2026-05-18
 local_project: mini_project
 local_profile: PROJECT_PROFILE.md
@@ -15,7 +15,7 @@ migration_notes:
 
 ## Current Framework Version
 
-This example uses the `mvp-0.13` team profile shape.
+This example uses the `mvp-0.15` experiment synthesis shape.
 
 ## Adoption Reason
 
@@ -23,7 +23,7 @@ Demonstrate a complete research trail without requiring a real consumer project.
 
 ## Local Integration
 
-The example keeps profile, team profile, state, and cards directly under `examples/mini_project/`.
+The example keeps profile, team profile, state, cards, and syntheses directly under `examples/mini_project/`.
 
 ## Upgrade History
 
@@ -37,6 +37,7 @@ The example keeps profile, team profile, state, and cards directly under `exampl
 | 2026-05-26 | mvp-0.7-example | mvp-0.8-example | Demonstrate resume consistency before action | Add state consistency fields and handoff resume readiness |
 | 2026-05-26 | mvp-0.8-example | mvp-0.9-example | Demonstrate action permission and blocked moves | Add blocked moves today and Action Permission example; no execution |
 | 2026-05-26 | mvp-0.9-example | mvp-0.13-example | Demonstrate optional team profile and advisor boundary | Add `TEAM_PROFILE.md` and an advisory Role Report; no execution or claim strengthening |
+| 2026-05-26 | mvp-0.13-example | mvp-0.15-example | Demonstrate experiment branch synthesis | Add `SYN-0001`; no evidence promotion or claim strengthening |
 
 ## Known Incompatibilities
 
@@ -52,4 +53,5 @@ The example keeps profile, team profile, state, and cards directly under `exampl
 - State records consistency fields so daily continue can stop at minimal context.
 - State records blocked moves today so next action is not mistaken for permission.
 - `TEAM_PROFILE.md` demonstrates `advisor:recovery-evaluator` as review input only.
+- `SYN-0001` demonstrates PR-style experiment branch synthesis and cannot be used as evidence.
 - Historical cards were not rewritten.

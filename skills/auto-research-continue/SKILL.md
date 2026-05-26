@@ -7,13 +7,13 @@ description: Thin Auto Research continuation and stage-navigation harness. Use o
 
 ## Purpose
 
-Resume Auto Research work with the smallest useful context. Keep daily work on one mainline decision and route high-risk actions to the proper gate or child skill.
+Resume Auto Research work with the smallest useful context. Keep daily work on one mainline decision, notice low-frequency synthesis needs, and route high-risk actions to the proper gate or child skill.
 
 ## Applicable Stages
 
 - Applicable stage: all research lifecycle stages for `continue`, `review`, `branch`, `revise`, `gate`, daily brief, handoff resume, and stage transition.
 - Trigger condition: the user asks to continue, resume, start today, review progress, branch, revise, run a gate, or decide the next research action after `$auto-research` is active or by invoking `$auto-research-continue`.
-- Failure risk: scanning the whole repo, reading team profile by default, trusting stale state, crossing into execution/evidence/claim/manuscript work without permission, or rewriting history.
+- Failure risk: scanning the whole repo, reading team profile by default, trusting stale state, repeatedly nagging about synthesis, crossing into execution/evidence/claim/manuscript work without permission, or rewriting history.
 
 ## Minimum Context
 
@@ -21,8 +21,9 @@ Resume Auto Research work with the smallest useful context. Keep daily work on o
 2. Load shared `../auto-research/references/context-router.md`.
 3. In consumer repos, read `.auto_research/PROJECT_PROFILE.md`, `research/STATE.md`, and the primary active card named by state.
 4. Read a handoff only when the user asks to resume from it, state names it, or a direct consistency conflict points to it.
-5. Read `.auto_research/TEAM_PROFILE.md` only for high-risk gates, team calibration, explicit team/role requests, or when the task depends on project-specific role background.
-6. In framework source repo maintenance, route to `$auto-research-maintainer`.
+5. Read the latest synthesis only when state names it and the task depends on recent experiment-thread understanding, evidence candidates, or claim warnings.
+6. Read `.auto_research/TEAM_PROFILE.md` only for high-risk gates, team calibration, explicit team/role requests, or when the task depends on project-specific role background.
+7. In framework source repo maintenance, route to `$auto-research-maintainer`.
 
 ## Reference Loading
 
@@ -37,14 +38,16 @@ Resume Auto Research work with the smallest useful context. Keep daily work on o
 2. Check state/card consistency before doing deeper work.
 3. Name the mainline question, today's decision, current risk, minimum next action, parking lot, and do-not-touch scope.
 4. For conflicts, return a Resume Consistency Verdict and stop before execution, evidence promotion, claim strengthening, or manuscript work.
-5. For high-risk next actions, return an Action Permission Verdict or route to the proper child skill.
-6. For branch or revise, preserve provenance and append rather than overwrite.
+5. If `synthesis_needed: suggested`, offer at most one low-frequency choice to synthesize, continue, or give an oral-only summary.
+6. For high-risk next actions, return an Action Permission Verdict or route to the proper child skill.
+7. For branch or revise, preserve provenance and append rather than overwrite.
 
 ## Blocked Actions
 
 - Do not load unrelated cards, manuscripts, old branches, or full experiment history for ordinary daily continue.
 - Do not read the team profile merely because it exists.
 - Do not execute experiments, promote evidence, strengthen claims, or draft manuscript prose from a daily brief.
+- Do not treat synthesis as mandatory daily work or repeat reminders after the user declines.
 - Do not treat `STATE.md` summaries as verified evidence unless source cards or evidence are read.
 - Do not rewrite previous cards; append revision or migration notes.
 
