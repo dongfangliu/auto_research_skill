@@ -13,6 +13,12 @@ This repository provides:
 - Project profile guidance.
 - Alignment-first initialization guidance.
 - Markdown templates for research cards.
+- Metric/baseline readiness rules for experiments and claims.
+- Feedback intake and decision trace rules for corrections and handoffs.
+- Result-to-evidence promotion rules before claims are strengthened.
+- Resume consistency rules for state, active cards, and handoffs.
+- Action permission and blocked-move rules for high-risk research actions.
+- Optional team-profile guidance for project-specific role and advisor background.
 - A minimal example project showing the full loop.
 - Submodule adoption and upgrade instructions.
 
@@ -34,6 +40,7 @@ Those should be added only after file-based workflows have been tested in real p
   .auto_research/
     framework/          # git submodule -> this repo
     PROJECT_PROFILE.md  # project-specific rules
+    TEAM_PROFILE.md     # optional project-specific role/advisor profile
     ADOPTION.md         # framework version and upgrade notes
   research/
     STATE.md
@@ -46,7 +53,7 @@ Those should be added only after file-based workflows have been tested in real p
     manuscripts/
 ```
 
-The submodule stores reusable framework files only. Project research state belongs in `research/`, and project-specific behavior belongs in `.auto_research/PROJECT_PROFILE.md`.
+The submodule stores reusable framework files only. Project research state belongs in `research/`, project-specific policy belongs in `.auto_research/PROJECT_PROFILE.md`, and optional project-specific role background belongs in `.auto_research/TEAM_PROFILE.md`.
 
 ## Codex Skill
 

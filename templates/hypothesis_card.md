@@ -35,11 +35,25 @@ Linked ideas, literature notes, or prior experiments.
 
 Describe the smallest experiment that can reduce the main uncertainty.
 
+## Required Metric/Baseline Readiness
+
+- Required metric:
+- Required baseline or control:
+- Success threshold:
+- Failure or ambiguity rule:
+- Claim boundary:
+
 ## Competing Hypotheses
 
 - 
 
 ## PI Review
 
-Direction, evidence sufficiency, and whether to proceed.
-
+```text
+Decision: approve | revise | block | branch
+Plain Reason:
+Blocking Issues:
+Required Changes:
+Overclaim Risk:
+Minimum Next Action:
+```

@@ -21,8 +21,9 @@ Use this priority order:
 2. Local `AGENTS.md` or equivalent repository instructions.
 3. Consumer project profile: `.auto_research/PROJECT_PROFILE.md`.
 4. Consumer research state: `research/STATE.md` and active cards.
-5. Framework files from `.auto_research/framework/` or local framework source.
-6. Generic skill guidance.
+5. Optional consumer team profile: `.auto_research/TEAM_PROFILE.md`, only when the task needs project-specific role background.
+6. Framework files from `.auto_research/framework/` or local framework source.
+7. Generic skill guidance.
 
 Do not let generic framework rules override project-specific rules unless the user asks for a framework-level correction.
 
@@ -41,6 +42,8 @@ For `initialized_consumer_repo`, read:
 - `research/STATE.md`
 - `.auto_research/ADOPTION.md` when adoption or upgrade matters
 - active cards listed by `STATE.md`
+- `.auto_research/TEAM_PROFILE.md` only when a high-risk gate or explicit team request needs it
+- handoff packet only when the user asks to resume from it, `STATE.md` names it for resume, or a direct consistency conflict points to it
 - framework files only when needed for a gate, template, or workflow rule
 
 For `partial_consumer_repo`, read:
@@ -55,6 +58,24 @@ For `uninitialized_project`, read:
 - `AGENTS.md`, README, docs, notes, experiment logs, outputs, configs, and manuscript drafts that identify research context
 - `.gitmodules` only when framework adoption is possible
 
+## Task Routing Matrix
+
+Use this to preserve token efficiency:
+
+| Task | Minimum files | Extra only if needed | Stop condition |
+| --- | --- | --- | --- |
+| Daily continue | profile, `STATE.md`, primary active card | none; do not read team profile by default | state/card conflict or high-risk next action |
+| Handoff resume | daily files plus named handoff | directly conflicting decision/card | handoff conflicts with state or blocked moves |
+| Experiment design/review | profile, state, active idea/hypothesis/brief | team profile when role background or advisor input matters; linked prior experiment only when cited | missing spine or readiness |
+| Experiment execution | approved brief, state, required procedure files | team profile when execution approval depends on project-specific role policy; method-specialist output if required | permission not approved or readiness not pass |
+| Result/evidence work | source decision/evidence, linked claim if claim-impacting | source experiment only if interpretation is unclear | promotion verdict not pass/hold as appropriate |
+| Claim audit | claim and linked evidence | team profile when claim review needs project-specific advisor background; linked decision only if evidence boundary is unclear | missing evidence or promotion boundary |
+| Manuscript outline | claim cards approved for outline and linked evidence summaries | team profile when writing/review roles need project-specific background; manuscript outline file | weak/speculative claim needs stronger wording |
+| Team calibration | profile, state or project docs, relevant templates | existing team profile if present | user declines calibration or policy would store real project state in framework |
+| Framework maintenance | `AGENTS.md`, relevant framework/skill/template/example files | README/changelog when user-visible | request would store real project state |
+
+If `TEAM_PROFILE.md` has already been read in the same continuous session and there is no file change, user request to reload, or context recovery after compaction, do not read it again.
+
 ## Ask Only After Discovery
 
 Do not ask the user for facts that can be discovered from files. Ask only about:
@@ -65,14 +86,25 @@ Do not ask the user for facts that can be discovered from files. Ask only about:
 - old-record policy
 - exact framework URL when no local source defines it
 - commit policy
+- team calibration preferences that cannot be inferred from project files
 - whether to migrate, link, or ignore old records
 
 When a low-risk preference is unanswered, use the documented default and record it as an assumption.
+
+## Minimal Conflict Handling
+
+If `STATE.md` points to a missing primary card, the card ID does not match `primary_active_item`, the card status contradicts state, or a handoff conflicts with blocked moves:
+
+1. Read only the directly named file if it exists.
+2. Return a Resume Consistency Verdict.
+3. Propose the minimal additive fix to `STATE.md`, active card, or handoff.
+4. Do not scan all cards to infer the intended state unless the user asks for a deep review.
 
 ## File Ownership
 
 - `.auto_research/framework/`: framework submodule; edit in the framework repo, not as project state.
 - `.auto_research/PROJECT_PROFILE.md`: consumer project-specific policy.
+- `.auto_research/TEAM_PROFILE.md`: optional consumer project role adaptations and advisory roles.
 - `.auto_research/ADOPTION.md`: framework source, commit, upgrades, and migration notes.
 - `.auto_research/INIT_REPORT.md`: initialization discovery, decisions, assumptions, and created files.
 - `research/`: real research state, cards, evidence, claims, and manuscript artifacts.

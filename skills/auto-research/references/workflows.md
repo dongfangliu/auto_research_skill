@@ -23,7 +23,8 @@ Follow `prompts/init_project.md` when it exists. Otherwise use this sequence:
 3. Ask only preference or policy questions that remain.
 4. Present an implementation plan listing files and directories to create or update.
 5. After approval, create only agreed Auto Research files from templates.
-6. Report created/updated files, framework URL or commit, captured rules, untouched records, active state, open questions, and next action.
+6. Offer optional short team calibration after the base profile and state exist.
+7. Report created/updated files, framework URL or commit, captured rules, team profile status, untouched records, active state, open questions, and next action.
 
 Defaults:
 
@@ -32,6 +33,24 @@ Defaults:
 - Local project rules outrank framework rules.
 - No automatic commit.
 - Use the project profile's file language if explicitly established; otherwise write notes in English. Keep IDs and schema fields in English.
+- Team profile is optional and skipped unless the user approves team calibration.
+
+## Team Calibration
+
+Use this only after project discovery or when the user asks to create or revise the project team.
+
+1. Read project files that already identify goals, methods, risks, and claim boundaries.
+2. Draft functional role adaptations for the existing framework roles.
+3. Ask 3-5 preference questions only for details that cannot be inferred.
+4. Store approved team information in `.auto_research/TEAM_PROFILE.md`.
+5. Keep `PROJECT_PROFILE.md` limited to `team_profile` and `team_profile_use`.
+
+Rules:
+
+- Team profiles improve review focus; they do not create a runtime or automatic scheduling.
+- Custom roles must use `advisor:<role_id>` and are advisory only.
+- Advisor reports do not approve experiments, promote evidence, strengthen claims, or draft manuscript-ready wording.
+- If the profile points to a missing team file, continue with generic roles and offer the minimal fix when team context is needed.
 
 ## Stage Navigation
 
@@ -82,6 +101,7 @@ At the workflow level, experiment work must:
 - keep student execution and PI critique separate
 - record deviations, failures, competing explanations, and linked evidence
 - use direct PI Verdicts instead of vague review prose
+- use the optional team profile only when project-specific role background or `advisor:<role_id>` input improves the current decision
 
 ## Evidence And Claim Work
 

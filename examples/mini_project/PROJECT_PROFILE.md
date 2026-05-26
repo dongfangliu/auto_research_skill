@@ -5,8 +5,10 @@ project_id: mini_project
 project_name: Research Continuity Mini Project
 autonomy_level: L1 guided
 default_language: English
-framework_commit: mvp-0.1-example
-updated_at: 2026-05-18
+framework_commit: mvp-0.13-example
+team_profile: TEAM_PROFILE.md
+team_profile_use: needed_only
+updated_at: 2026-05-26
 ```
 
 ## Project Identity
@@ -23,13 +25,19 @@ This example does not claim statistical validity, real human productivity improv
 
 ## Claim Boundaries
 
-Do not claim that the framework improves all research workflows. Only claim that this example demonstrates a plausible audit path and highlights the need for a recovery metric.
+Do not claim that the framework improves all research workflows. Only claim that this example demonstrates a plausible audit path and highlights the need for a recovery metric and baseline.
 
 ## Required Context
 
+Daily continue:
+
 - `STATE.md`
+- Primary active card listed by `STATE.md`
+
+Deep review or gate:
+
 - Relevant card files linked from `STATE.md`
-- Framework lifecycle and state model
+- Framework lifecycle, state model, and workflow gates when needed
 
 ## Artifact Policy
 
@@ -48,10 +56,23 @@ Use manual IDs. Do not rewrite earlier cards; append revision notes.
 - Claim recommendation: pi-reviewer + claim-auditor.
 - Manuscript: writing-agent + claim-auditor + pi-reviewer.
 
+## Team Profile Policy
+
+- Team profile path: `TEAM_PROFILE.md`.
+- Use rule: read only for experiment design/review, method readiness, claim audit, manuscript outline review, or when the user names the team or `advisor:recovery-evaluator`.
+- Applicable stage: high-risk gates and team calibration, not ordinary daily continue.
+- Trigger condition: recovery-quality scoring, baseline construction, or advisor background can improve the current decision.
+- Failure risk: treating advisor or PI opinion as evidence would overstate `CLM-0001`.
+- Custom advisors: `advisor:recovery-evaluator` is advisory only and cannot approve execution, evidence promotion, claim strengthening, or manuscript prose.
+
 ## Blocked Moves
 
-- Do not turn the example into a real empirical claim.
-- Do not write publication-ready language from the current evidence.
+- Experiment execution: do not execute `EXP-0002` until readiness passes and the user approves.
+- Evidence promotion: do not promote draft briefs, readiness verdicts, or handoffs as evidence.
+- Claim strengthening: do not strengthen `CLM-0001` from weak evidence.
+- Manuscript prose: do not write publication-ready language from current evidence.
+- Profile or framework changes: ask before changing project policy or framework version.
+- Specialist or multi-agent work: use only for experiment/method/claim gates, not ordinary organization.
 
 ## Publish Standards
 
@@ -59,5 +80,10 @@ At least moderate evidence is required before writing a real paper draft. This e
 
 ## Profile Update Triggers
 
-Update if a new card type is required or if recovery metrics become central.
+Update if a new card type is required, recovery metrics become central, or the team profile path, use rule, or advisor boundary changes.
 
+## Persistent Feedback Rules
+
+- Persist feedback that changes claim boundaries, experiment execution permission, or context budget.
+- Do not persist one-off response formatting preferences.
+- PI feedback should stay direct and action-oriented.

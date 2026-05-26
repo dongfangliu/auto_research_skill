@@ -27,6 +27,7 @@ A project profile should include:
 - Required context files.
 - Artifact naming rules.
 - Agent activation rules.
+- Optional team profile path and use rule.
 - Evidence standards.
 - Publish standards.
 - Blocked moves.
@@ -41,6 +42,7 @@ Put project-specific rules in the profile:
 - Project-specific forbidden claims.
 - Local experiment numbering.
 - Local output conventions.
+- The path to a project team profile and when to read it.
 
 Put cross-project rules in this framework:
 
@@ -49,6 +51,18 @@ Put cross-project rules in this framework:
 - Generic agent roles.
 - Generic gates.
 - Submodule upgrade process.
+
+## Profile vs Team Profile
+
+`PROJECT_PROFILE.md` should keep the durable project policy: autonomy, claim boundaries, required context, blocked moves, and the path to the optional team profile.
+
+`.auto_research/TEAM_PROFILE.md` should keep project-specific role background and custom advisory roles.
+
+- Applicable stage: team calibration, experiment design/review, failure review, method readiness, claim audit, manuscript planning, or a user request that names the team.
+- Trigger condition: role background or advisory expertise can improve a high-risk decision.
+- Failure risk: putting detailed team biographies into the profile bloats every resume; putting policy or claim boundaries only in the team profile can hide authoritative rules from ordinary work.
+
+Team profiles are functional, not roleplay-first. They should record each role's expertise, review focus, likely blind spots, and output constraints. Custom roles use `advisor:<role_id>` and remain advisory.
 
 ## Update Triggers
 
@@ -59,4 +73,4 @@ Suggest a profile update when:
 - A gate is too weak or too heavy.
 - A project-specific claim boundary changes.
 - The project adopts a new framework version.
-
+- The team profile path, use rule, or advisor boundaries change.

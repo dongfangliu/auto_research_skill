@@ -170,7 +170,7 @@ If the result is not `pass`, stop at the minimum next action. Do not continue in
 
 ## Role Report
 
-Use for delegated or simulated roles:
+Use for delegated, simulated, or advisory roles:
 
 ```text
 Role
@@ -183,6 +183,23 @@ Open Questions
 Recommended Next Action
 Files / Commands / Outputs
 ```
+
+For custom project advisors, `Role` must use `advisor:<role_id>`. Advisor reports are review input only and do not approve gates or create evidence.
+
+## Team Calibration Brief
+
+Use when creating or revising `.auto_research/TEAM_PROFILE.md`:
+
+```text
+Team Calibration Brief
+Source Context Read
+Draft Core Role Adaptations
+Proposed Advisors
+Questions Still Needed
+Will Not Change
+```
+
+Ask only preference questions that cannot be inferred from project files. Do not create a runtime registry or replace evidence gates.
 
 ## Execution Report
 

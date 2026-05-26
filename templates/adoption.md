@@ -6,6 +6,7 @@ framework_commit:
 adopted_at:
 local_project:
 local_profile:
+local_team_profile:
 upgrade_history:
 known_incompatibilities:
 migration_notes:
@@ -21,7 +22,7 @@ Why this project adopted Auto Research.
 
 ## Local Integration
 
-Where the project keeps its profile, state, cards, outputs, and manuscript materials.
+Where the project keeps its profile, optional team profile, state, cards, outputs, and manuscript materials.
 
 ## Upgrade History
 
@@ -36,4 +37,3 @@ Framework features or templates that do not apply to this project.
 ## Migration Notes
 
 Additive notes only. Do not rewrite old research cards automatically.
-

@@ -56,6 +56,7 @@ Get explicit user confirmation for:
 - Whether existing project rules remain the highest local authority. Default: yes.
 - Whether old records should remain as linked archives or be migrated into cards. Default: linked archives only.
 - The exact Auto Research framework URL if a submodule needs to be added.
+- Whether to run optional team calibration after the base profile and state are created. Default: skip for now.
 - Whether to create an initialization commit after review. Default: no automatic commit.
 
 If the user does not answer a low-risk preference, use the default and record it as an assumption in the initialization report.
@@ -69,6 +70,7 @@ After user alignment, present a concrete initialization plan:
 - Whether a submodule will be added or reused.
 - Which framework commit will be recorded.
 - What `PROJECT_PROFILE.md` will contain.
+- Whether `.auto_research/TEAM_PROFILE.md` will be skipped or created through a short team calibration.
 - What `research/STATE.md` will contain.
 - Whether `ADOPTION.md` and `INIT_REPORT.md` will be written.
 - Any risks or manual checks.
@@ -83,6 +85,7 @@ Create or update only the agreed files:
 .auto_research/
   framework/
   PROJECT_PROFILE.md
+  TEAM_PROFILE.md
   ADOPTION.md
   INIT_REPORT.md
 research/
@@ -98,9 +101,12 @@ research/
 
 Use templates from `.auto_research/framework/templates/` when the framework submodule is available.
 
+Create `.auto_research/TEAM_PROFILE.md` only if the user approved team calibration. The team profile should be drafted from discovered project files first, then refined with 3-5 preference questions. It must adapt existing framework roles and any `advisor:<role_id>` custom roles without changing evidence, gate, or action-permission rules.
+
 For half-initialized repositories:
 
 - Preserve existing `.auto_research/PROJECT_PROFILE.md`, `.auto_research/ADOPTION.md`, and `research/STATE.md` unless the user approved rebuilding them.
+- Preserve existing `.auto_research/TEAM_PROFILE.md` unless the user approved updating team calibration.
 - Patch missing sections rather than replacing the whole file when possible.
 - Record all assumptions and unresolved questions in `INIT_REPORT.md`.
 
@@ -111,6 +117,7 @@ After initialization, report:
 - Files created or updated.
 - Framework URL and commit.
 - Project-specific rules captured.
+- Whether a team profile was created, skipped, or left unchanged.
 - Existing records intentionally left untouched.
 - Current active research state.
 - Open questions.
@@ -118,4 +125,3 @@ After initialization, report:
 - Suggested git commit message, if the user wants to commit.
 
 Do not claim the project is fully automated. Initialization only creates the file-first research state layer.
-

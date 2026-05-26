@@ -19,6 +19,7 @@ This skill does not replace the framework repository and does not create a runti
 - Classify the repository before acting: `framework_repo`, `initialized_consumer_repo`, `partial_consumer_repo`, or `uninitialized_project`.
 - In consumer repos, read project-local profile and state before generic framework files.
 - In the framework repo, never store a real project's research state.
+- Use an optional `.auto_research/TEAM_PROFILE.md` only when a high-risk decision or explicit team request needs project-specific role background.
 - Preserve provenance: branch, revise, or append migration notes instead of rewriting historical cards.
 - Separate verified facts, inferences, limitations, competing explanations, and next steps.
 - Mark unsupported claims as `speculative`; bind claims to evidence before manuscript use.
@@ -78,8 +79,9 @@ Prefer framework files from `.auto_research/framework/` in consumer repos. When 
 3. Use the active stage, active item, risk, and next action from `research/STATE.md` when present.
 4. Apply the relevant gate before crossing stages or strengthening claims.
 5. Keep context small: start from profile, state, and active cards; load task-specific references only after the task requires them.
-6. Record framework-source files and default templates in English. In consumer repos, follow the project profile if it explicitly sets another file language.
-7. Prefer compact verdicts and role reports over long reasoning. Expose only the reasoning needed for the user or next agent to audit the decision.
+6. Load the optional team profile only for experiment design/review, failure review, method readiness, claim audit, manuscript planning, or when the user names the team or a role. Do not load it for ordinary daily continue.
+7. Record framework-source files and default templates in English. In consumer repos, follow the project profile if it explicitly sets another file language.
+8. Prefer compact verdicts and role reports over long reasoning. Expose only the reasoning needed for the user or next agent to audit the decision.
 
 ## MVP Boundaries
 

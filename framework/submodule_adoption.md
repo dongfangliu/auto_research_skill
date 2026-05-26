@@ -18,6 +18,7 @@ Then create local project files outside the submodule:
 ```text
 .auto_research/
   PROJECT_PROFILE.md
+  TEAM_PROFILE.md     # optional project-specific role/advisor profile
   ADOPTION.md
 research/
   STATE.md
@@ -34,6 +35,7 @@ research/
 
 - `.auto_research/framework/`: framework submodule; edit in the framework repo, not as local project state.
 - `.auto_research/PROJECT_PROFILE.md`: project-specific rules.
+- `.auto_research/TEAM_PROFILE.md`: optional project-specific role adaptations and advisory roles.
 - `.auto_research/ADOPTION.md`: framework adoption and upgrade record.
 - `research/`: actual project state and artifacts.
 
@@ -64,5 +66,6 @@ migration_notes:
 ## Feeding Improvements Back
 
 - Local-only behavior belongs in `PROJECT_PROFILE.md`.
+- Project-specific role background belongs in `TEAM_PROFILE.md` when the project uses team calibration.
 - Cross-project lessons should become framework issues or framework changes.
 - Repeated manual steps may become scripts or CLI commands later.

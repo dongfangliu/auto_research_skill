@@ -26,10 +26,11 @@ Use this sequence for design, execution, and review:
 1. Frame the mainline question and current decision from profile, state, and the active card.
 2. Draft the smallest experiment spine that can change that decision.
 3. Run Metric/Baseline Readiness before procedure details when measurement, comparison, scoring, sampling, or claim impact matters.
-4. Check action permission before execution, long-running commands, file writes, specialist roles, evidence promotion, claim changes, or manuscript language.
-5. Execute only the approved minimum test. Record exact commands, inputs, fixed settings, environment details that affect interpretation, outputs, and deviations.
-6. Stop on broken preconditions, missing artifacts, failed sanity checks, non-comparable baselines, or unexpected scope expansion. Preserve the failure instead of repairing the question after the run.
-7. Convert results to a decision record before evidence. Use an Evidence Promotion Verdict before any claim impact.
+4. Load the optional team profile only when project-specific role background or a custom advisor materially improves the current review.
+5. Check action permission before execution, long-running commands, file writes, specialist roles, evidence promotion, claim changes, or manuscript language.
+6. Execute only the approved minimum test. Record exact commands, inputs, fixed settings, environment details that affect interpretation, outputs, and deviations.
+7. Stop on broken preconditions, missing artifacts, failed sanity checks, non-comparable baselines, or unexpected scope expansion. Preserve the failure instead of repairing the question after the run.
+8. Convert results to a decision record before evidence. Use an Evidence Promotion Verdict before any claim impact.
 
 Keep the loop token-light: report only the fields that affect the next decision, reproducibility, evidence boundary, or user approval.
 
@@ -76,6 +77,8 @@ When subagents are available and allowed, use separate agents for `student-execu
 
 Add `method-specialist` before execution when validity depends on metrics, baselines, statistics, controls, numerical stability, or sampling.
 
+If a project team profile defines `advisor:<role_id>`, consult that advisor only when its scope is relevant and the decision is high risk. Advisor output must use Role Report and remains input to the orchestrator; it cannot approve execution or substitute for PI, method, or claim gates.
+
 ## Brief Requirements
 
 An experiment brief must include:
@@ -116,6 +119,8 @@ After execution, write or update a decision record with:
 - PI Verdict
 
 Facts are direct observations, commands, configs, inputs, outputs, and artifacts. Inferences must stay weaker than the facts.
+
+Advisor opinions and team-profile role background are not facts or evidence. Record them as review input only when they changed the decision trace.
 
 ## Result-to-Evidence Review
 

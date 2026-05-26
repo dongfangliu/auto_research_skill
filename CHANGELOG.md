@@ -1,5 +1,13 @@
 # Changelog
 
+## mvp-0.13 - Optional project team profiles
+
+- Added `templates/team_profile.md` for project-specific role adaptations and advisory roles.
+- Added `team_profile` and `team_profile_use` guidance to project profiles, initialization, submodule adoption, and README docs.
+- Updated skill routing so team profiles are loaded only for high-risk gates, team calibration, or explicit team/role requests, not ordinary daily continue.
+- Added advisor boundaries: custom roles use `advisor:<role_id>`, return Role Reports only, and cannot approve gates or create evidence.
+- Extended forward tests, failure modes, and the mini project with a minimal `TEAM_PROFILE.md` and advisory review example.
+
 ## mvp-0.12 - Guided user choices
 
 - Required user questions at meaningful choice points to include 2-3 options, one `[Recommended]` option, and an explicit custom-reply escape hatch.

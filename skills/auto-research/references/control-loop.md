@@ -10,10 +10,13 @@ Load context in this order:
 2. Project profile.
 3. `research/STATE.md`.
 4. Active cards named by state.
-5. Task-specific reference file.
-6. Framework files only when a gate, template, or rule is needed.
+5. Optional `.auto_research/TEAM_PROFILE.md` only for high-risk gates, team calibration, or explicit team/role requests.
+6. Task-specific reference file.
+7. Framework files only when a gate, template, or rule is needed.
 
-For a normal `continue`, stop after profile, state, and active cards unless a gate or missing template requires more. For a claim audit, do not load experiment-work unless the claim depends on an experiment record that must be inspected.
+For a normal `continue`, stop after profile, state, and active cards unless a gate or missing template requires more. Do not load the team profile for ordinary daily continue. For a claim audit, do not load experiment-work unless the claim depends on an experiment record that must be inspected.
+
+If the optional team profile has already been read in the same continuous session, reuse that context unless the file changed, the user asks to reload it, or context recovery after compaction makes high-risk work depend on it.
 
 ## Long Context Recovery
 
@@ -23,7 +26,8 @@ Use this when the conversation is long, a session resumes after compaction, or t
 2. Treat chat memory as volatile until it is confirmed by those files or by a named handoff, decision record, or active card.
 3. Do not execute experiments, promote evidence, strengthen claims, or draft manuscript prose from chat memory alone.
 4. If an important user correction is not yet durable, say which existing place should capture it: `STATE.md`, the active card, a decision record, or a handoff packet.
-5. Do not create a new checkpoint artifact. Use existing state, cards, decision records, and handoffs.
+5. For high-risk role/advisor work after compaction, re-read the team profile if the task depends on it.
+6. Do not create a new checkpoint artifact. Use existing state, cards, decision records, and handoffs.
 
 ## Daily Mainline Discipline
 

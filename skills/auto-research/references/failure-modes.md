@@ -116,6 +116,18 @@ Risk: spawning or simulating many roles for routine organization.
 
 Guardrail: default to one orchestrator. Add roles only for experiments, failures, claim/manuscript work, or framework upgrades.
 
+## Team Profile Overuse
+
+Risk: reading `.auto_research/TEAM_PROFILE.md` for every daily continue and bloating the context budget.
+
+Guardrail: read team profiles only for team calibration, high-risk gates, experiment design/review, failure review, method readiness, claim audit, manuscript planning, or explicit team/role requests. If the team profile was already read in the same continuous session and has not changed, reuse that context.
+
+## Advisor Authority Creep
+
+Risk: treating `advisor:<role_id>` as a decision-maker that can approve experiments, promote evidence, strengthen claims, or override PI/auditor gates.
+
+Guardrail: advisors return Role Reports only. The orchestrator resolves their input, and framework gates still decide. Advisor opinions are not evidence and cannot strengthen claims.
+
 ## Runtime Creep
 
 Risk: adding CLI, databases, task queues, migrations, or web UI while trying to improve the file-first MVP.

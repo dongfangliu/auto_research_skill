@@ -23,6 +23,33 @@ What was observed or established?
 
 Experiment, literature note, dataset, figure, command, or artifact.
 
+## Evidence Promotion Verdict
+
+```text
+Decision: promote | hold | revise | block | branch
+Source Result:
+Verified Facts:
+Inferences:
+Evidence Strength:
+Supports:
+Does Not Support:
+Claim Impact: strengthen | keep weak | weaken | contradict | none
+Missing Links:
+Allowed Wording:
+Forbidden Wording:
+Minimum Next Action:
+```
+
+## Source Interpretation
+
+- Source record:
+- Readiness status:
+- Metric/baseline interpretation:
+- Threshold outcome:
+- Sanity check outcome:
+- Deviation impact:
+- Ambiguity status:
+
 ## Supports
 
 Ideas, hypotheses, or claims supported by this evidence.
@@ -43,3 +70,12 @@ Scope, assumptions, uncertainty, and failure modes.
 
 How this evidence may be used in claim or manuscript drafting.
 
+## Claim Use Boundary
+
+What this evidence cannot be used to claim.
+
+## State Impact
+
+- Claim/evidence readiness summary:
+- State update required:
+- Stale state risk:

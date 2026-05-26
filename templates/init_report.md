@@ -27,6 +27,7 @@ Files and directories inspected before initialization:
 - Primary research goal:
 - Current research stage:
 - Auto Research role:
+- Team calibration:
 - Project rules authority:
 - Old record handling:
 - Commit policy:
@@ -64,4 +65,3 @@ Summarize the initialized `research/STATE.md`.
 ## Recommended Next Action
 
 What the user or next agent should do after initialization.
-

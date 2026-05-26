@@ -27,6 +27,13 @@ Paper contribution, limitation, method claim, result claim, background claim, or
 
 Linked evidence cards.
 
+## Evidence Promotion Boundary
+
+- Evidence must come from:
+- Promotion status required:
+- Direct experiment or readiness use allowed:
+- Claim impact allowed:
+
 ## Conflicting Evidence
 
 Linked evidence cards or literature notes.
@@ -43,6 +50,26 @@ Overstatements or unsupported language.
 
 Explain the assigned evidence level.
 
+## Metric And Baseline Boundary
+
+- Required metric:
+- Required baseline or control:
+- Comparative wording allowed:
+- Missing readiness issue:
+
+## Claim Boundary Revisions
+
+- Source:
+- Correction:
+- Boundary changed:
+- Do not repeat:
+
+## State Impact
+
+- Claim readiness summary:
+- State update required:
+- Stale state risk:
+
 ## Manuscript Section
 
 Where this claim may appear.
@@ -50,4 +77,3 @@ Where this claim may appear.
 ## Claim Audit
 
 Auditor decision and required revisions.
-
