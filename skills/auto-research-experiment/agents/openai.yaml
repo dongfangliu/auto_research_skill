@@ -1,0 +1,7 @@
+interface:
+  display_name: "Auto Research Experiment"
+  short_description: "Design and review evidence-bound research experiments"
+  default_prompt: "Use $auto-research-experiment to design or review the current Auto Research experiment before execution."
+
+policy:
+  allow_implicit_invocation: true

@@ -55,70 +55,107 @@ Those should be added only after file-based workflows have been tested in real p
 
 The submodule stores reusable framework files only. Project research state belongs in `research/`, project-specific policy belongs in `.auto_research/PROJECT_PROFILE.md`, and optional project-specific role background belongs in `.auto_research/TEAM_PROFILE.md`.
 
-## Codex Skill
+## Codex Skill Suite
 
-This repository includes a Codex skill source at `skills/auto-research/`. The repository copy is the versioned source of truth, but Codex only uses the skill after it is installed into the local Codex skills directory and the session is restarted.
+This repository includes a Codex skill suite under `skills/`. The repository copy is the versioned source of truth, but Codex only uses the skills after they are installed into the local Codex skills directory and the session is restarted.
 
-The skill is explicit-first to reduce token overhead in unrelated work. Invoke it with `$auto-research` or `$auto research` when you want the research harness active.
+The main skill is explicit-first to reduce token overhead in unrelated work. Invoke `$auto-research` or `$auto research` when you want the research harness active. After that, narrower child skills can handle initialization, continuation, experiments, evidence/claims, and maintenance inside the active Auto Research context.
+
+The full suite is:
+
+- `auto-research`: session activator and compatibility dispatcher.
+- `auto-research-init`: initialization, adoption, partial repair, and team calibration planning.
+- `auto-research-continue`: daily continue, resume, review, branch, revise, gate, and stage navigation.
+- `auto-research-experiment`: experiment design, readiness, execution review, and failure review.
+- `auto-research-evidence-claims`: evidence promotion, claim audit, wording boundaries, and manuscript readiness.
+- `auto-research-maintainer`: framework, template, example, skill, forward-test, adoption, and upgrade maintenance.
 
 ### Install From GitHub
 
-If this repository is available on GitHub, ask Codex:
+If this repository is available on GitHub, ask Codex to install each skill directory:
 
 ```text
 Install the Codex skill from https://github.com/dongfangliu/auto_research_skill/tree/master/skills/auto-research
+Install the Codex skill from https://github.com/dongfangliu/auto_research_skill/tree/master/skills/auto-research-init
+Install the Codex skill from https://github.com/dongfangliu/auto_research_skill/tree/master/skills/auto-research-continue
+Install the Codex skill from https://github.com/dongfangliu/auto_research_skill/tree/master/skills/auto-research-experiment
+Install the Codex skill from https://github.com/dongfangliu/auto_research_skill/tree/master/skills/auto-research-evidence-claims
+Install the Codex skill from https://github.com/dongfangliu/auto_research_skill/tree/master/skills/auto-research-maintainer
 ```
 
-Then restart Codex so the skill is loaded.
+Then restart Codex so the skills are loaded.
 
-For private repositories, make sure your local GitHub credentials or `GITHUB_TOKEN` / `GH_TOKEN` can access the repository before asking Codex to install the skill.
+For private repositories, make sure your local GitHub credentials or `GITHUB_TOKEN` / `GH_TOKEN` can access the repository before asking Codex to install the skills.
+
+Legacy single-skill installation of `skills/auto-research` still works. It uses the same shared references and falls back to internal routing when child skills are not installed.
 
 ### Update From GitHub
 
-The Codex installer does not overwrite an existing skill by default. To update, remove the installed copy, reinstall from the same GitHub URL, then restart Codex.
+The Codex installer does not overwrite existing skills by default. To update the suite, remove the installed copies, reinstall from the same GitHub URLs, then restart Codex.
 
 On Windows:
 
 ```powershell
-Remove-Item -Recurse -Force "$env:USERPROFILE\.codex\skills\auto-research"
+$skillNames = @(
+  "auto-research",
+  "auto-research-init",
+  "auto-research-continue",
+  "auto-research-experiment",
+  "auto-research-evidence-claims",
+  "auto-research-maintainer"
+)
+foreach ($name in $skillNames) {
+  $path = Join-Path $env:USERPROFILE ".codex\skills\$name"
+  if (Test-Path $path) { Remove-Item -Recurse -Force $path }
+}
 ```
 
 On macOS or Linux:
 
 ```bash
-rm -rf "${CODEX_HOME:-$HOME/.codex}/skills/auto-research"
+for name in auto-research auto-research-init auto-research-continue auto-research-experiment auto-research-evidence-claims auto-research-maintainer; do
+  rm -rf "${CODEX_HOME:-$HOME/.codex}/skills/$name"
+done
 ```
 
-Then ask Codex again:
-
-```text
-Install the Codex skill from https://github.com/dongfangliu/auto_research_skill/tree/master/skills/auto-research
-```
+Then ask Codex again to install the suite from GitHub. If you only installed the legacy main skill, remove and reinstall only `auto-research`.
 
 ### Install From A Local Checkout
 
-For local development or offline use, install from a cloned checkout:
+For local development or offline use, install the full suite from a cloned checkout:
 
 ```powershell
-$dest = Join-Path $env:USERPROFILE ".codex\skills\auto-research"
-if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
-Copy-Item -Recurse ".\skills\auto-research" $dest
+$skillNames = @(
+  "auto-research",
+  "auto-research-init",
+  "auto-research-continue",
+  "auto-research-experiment",
+  "auto-research-evidence-claims",
+  "auto-research-maintainer"
+)
+foreach ($name in $skillNames) {
+  $dest = Join-Path $env:USERPROFILE ".codex\skills\$name"
+  if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
+  Copy-Item -Recurse ".\skills\$name" $dest
+}
 ```
 
 On macOS or Linux:
 
 ```bash
-dest="${CODEX_HOME:-$HOME/.codex}/skills/auto-research"
-rm -rf "$dest"
-mkdir -p "$(dirname "$dest")"
-cp -R ./skills/auto-research "$dest"
+for name in auto-research auto-research-init auto-research-continue auto-research-experiment auto-research-evidence-claims auto-research-maintainer; do
+  dest="${CODEX_HOME:-$HOME/.codex}/skills/$name"
+  rm -rf "$dest"
+  mkdir -p "$(dirname "$dest")"
+  cp -R "./skills/$name" "$dest"
+done
 ```
 
-Restart Codex after installation so the skill is loaded.
+Restart Codex after installation so the skills are loaded.
 
 ### Use The Skill
 
-After installation, users can invoke `$auto-research` or `$auto research` once to enter Auto Research mode for the current conversation. The skill is configured with `allow_implicit_invocation: false`, so ordinary coding or writing tasks should not load it automatically. For example:
+After installation, users can invoke `$auto-research` or `$auto research` once to enter Auto Research mode for the current conversation. The main skill is configured with `allow_implicit_invocation: false`, so ordinary coding or writing tasks should not load it automatically. For example:
 
 ```text
 $auto-research help me continue this research project
@@ -132,7 +169,7 @@ review the last experiment
 turn the evidence into claim cards
 ```
 
-The skill loads detailed guidance lazily from `skills/auto-research/references/`, so a small continue/review task does not need to load initialization, manuscript, or upgrade instructions.
+The skill suite loads detailed guidance lazily from `skills/auto-research/references/`, so a small continue/review task does not need to load initialization, manuscript, or upgrade instructions. Child skills are thin harness layers; the shared references remain the source of truth.
 
 ## Research Loop
 
@@ -177,10 +214,7 @@ Initialization is alignment-first. The agent should understand the project and c
 If this framework is already available as `.auto_research/framework/` inside a project, ask a coding agent:
 
 ```text
-请读取 .auto_research/framework/prompts/init_project.md，
-按其中流程帮助我初始化当前科研项目。
-先做只读 discovery 和 Alignment Brief，
-不要在我确认前创建或修改文件。
+Use $auto-research-init. Read `.auto_research/framework/prompts/init_project.md` and help initialize the current research project. First do read-only discovery and produce an Alignment Brief. Do not create or modify files before I approve the implementation plan.
 ```
 
 If the framework has not been added yet, provide `prompts/init_project.md` directly to the agent or point it to this repository.

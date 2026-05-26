@@ -1,0 +1,7 @@
+interface:
+  display_name: "Auto Research Continue"
+  short_description: "Resume Auto Research projects with minimal context"
+  default_prompt: "Use $auto-research-continue to resume this Auto Research project and identify the next safe research action."
+
+policy:
+  allow_implicit_invocation: true

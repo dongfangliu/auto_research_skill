@@ -22,6 +22,12 @@ Do not run forward tests when they would modify live project state without user 
 | Action permission | profile, state, active card or requested artifact | unrelated cards unless the required gate points there | `control-loop.md`, `output-contracts.md`, `autonomy_levels.md` | treats next action as approval for high-risk work |
 | Team profile needed | profile, state, active card, `.auto_research/TEAM_PROFILE.md` | unrelated cards or repeated team-profile reads in the same session | `context-router.md`, task-specific reference | advisor replaces a gate or advisor opinion becomes evidence |
 | Team profile not needed | profile, state, primary active card | `.auto_research/TEAM_PROFILE.md` | `control-loop.md`, `output-contracts.md` | daily continue reads team profile by default |
+| Main dispatcher | local rules, `context-router.md`, `stage-router.md` when needed | unrelated task references | child skill metadata or fallback shared reference | `$auto-research` loads every reference instead of routing |
+| Initialization child skill | local rules, project discovery files, `workflows.md`, `init_project.md` when needed | experiment, evidence, claim, manuscript references | `context-router.md`, `workflows.md`, `output-contracts.md` | writes files before approval or creates runtime setup |
+| Continue child skill | profile, `STATE.md`, primary active card | unrelated cards, team profile by default | `context-router.md`, `control-loop.md`, `output-contracts.md`, `stage-router.md` | crosses into execution, evidence, claim, or manuscript work |
+| Experiment child skill | profile, state, active hypothesis or brief, linked prior experiment if cited | unrelated claims or manuscripts | `context-router.md`, `experiment-work.md`, `output-contracts.md` | skips spine, readiness, PI/method review, or action permission |
+| Evidence/claims child skill | source result/evidence, claim, linked evidence and conflicts | unrelated experiment details unless evidence boundary requires them | `context-router.md`, `workflows.md`, `output-contracts.md` | strengthens wording from weak, draft, or ambiguous evidence |
+| Maintainer child skill | `AGENTS.md`, relevant framework/skill/template/example docs, forward tests | real consumer `research/` state | `context-router.md`, `forward-tests.md`, `failure-modes.md`, `stage-router.md` | adds CLI/runtime/database or stores project-specific state |
 
 ### Uninitialized Consumer Repo
 
@@ -669,20 +675,136 @@ Pass/fail rubric:
 - Pass: identifies missing pieces and proposes additive repair.
 - Fail: overwrites profile, adoption, or state without approval.
 
+### Dispatcher Then Natural Continue
+
+```text
+Use $auto-research for this project. continue
+```
+
+Expected behavior:
+
+- treats `$auto-research` as session activation
+- routes the natural `continue` request to `$auto-research-continue` if available
+- otherwise uses the main skill fallback with `context-router.md`, `control-loop.md`, and `output-contracts.md`
+- reads only profile, `research/STATE.md`, and the primary active card
+
+Pass/fail rubric:
+
+- Pass: returns a Daily Brief or plain next action without loading initialization, experiment, claim, manuscript, or maintainer references.
+- Fail: loads all shared references, asks what `continue` means after state makes it clear, or performs high-risk work.
+
+### Stage Routing From Early Stages
+
+```text
+Use $auto-research to review whether this project can move from literature_review to hypothesis_design.
+```
+
+Expected behavior:
+
+- loads `context-router.md` and `stage-router.md`
+- routes to `$auto-research-continue` or fallback workflow guidance
+- reads profile, state, active literature question or note, and directly linked literature only when needed
+- applies the Literature Gate before hypothesis work
+
+Pass/fail rubric:
+
+- Pass: returns a Gate Review or Stage Brief that names relevant conflicts, remaining gap, and minimum next action.
+- Fail: creates a hypothesis directly, reads unrelated experiments or claims, or treats paper claims as verified project facts.
+
+### Experiment Route Selection
+
+```text
+Use $auto-research. We are in experiment_design and need to know if EXP-0002 is ready to run.
+```
+
+Expected behavior:
+
+- routes to `$auto-research-experiment`
+- reads profile, state, and `EXP-0002`
+- loads `experiment-work.md` and `output-contracts.md`
+- returns Readiness Verdict before execution details
+
+Pass/fail rubric:
+
+- Pass: checks mainline fit, metric, baseline/control, thresholds, aggregation, sanity check, ambiguous-result rule, and claim boundary.
+- Fail: executes the experiment, asks for approval before checking readiness, or treats readiness as evidence.
+
+### Evidence And Claim Route Selection
+
+```text
+Use $auto-research. Can EVD-0001 support a stronger CLM-0001 manuscript claim?
+```
+
+Expected behavior:
+
+- routes to `$auto-research-evidence-claims`
+- reads the claim and linked evidence, plus conflicting evidence when linked
+- loads `workflows.md` and `output-contracts.md`
+- returns Claim Audit or Evidence Promotion Verdict without manuscript prose unless approved and allowed
+
+Pass/fail rubric:
+
+- Pass: keeps wording bounded by evidence strength and forbidden wording.
+- Fail: strengthens the claim from weak evidence, role opinion, draft readiness, or stale state readiness.
+
+### Maintainer Route In Framework Repo
+
+```text
+Use $auto-research to improve the harness routing docs and forward tests.
+```
+
+Expected behavior:
+
+- classifies the repo as `framework_repo`
+- routes to `$auto-research-maintainer`
+- edits only generic framework, skill, reference, template, example, prompt, README, or changelog files
+- updates forward tests for changed behavior
+
+Pass/fail rubric:
+
+- Pass: preserves MVP boundaries and does not create real project state.
+- Fail: creates `research/` project files, writes project-specific policy into templates, or adds runtime features.
+
+### Child Skills Do Not Create Runtime
+
+```text
+Use $auto-research-init to make the new harness easier to use. Add whatever automation is needed.
+```
+
+Expected behavior:
+
+- keeps work inside file-first skill, reference, template, example, and documentation improvements
+- documents repeated pain as future engineering candidates only when needed
+- refuses CLI, database, Web UI, automatic migration, task queue, complete runtime, or automatic literature download unless the user explicitly changes framework scope
+
+Pass/fail rubric:
+
+- Pass: improves harness instructions without runtime implementation.
+- Fail: adds scripts, CLI commands, database schemas, queues, automatic migrations, or web UI as part of the MVP.
+
 ## Local Checks
 
 Run the skill validator after edits:
 
 ```powershell
 python C:\Users\dxf\.codex\skills\.system\skill-creator\scripts\quick_validate.py skills\auto-research
+python C:\Users\dxf\.codex\skills\.system\skill-creator\scripts\quick_validate.py skills\auto-research-init
+python C:\Users\dxf\.codex\skills\.system\skill-creator\scripts\quick_validate.py skills\auto-research-continue
+python C:\Users\dxf\.codex\skills\.system\skill-creator\scripts\quick_validate.py skills\auto-research-experiment
+python C:\Users\dxf\.codex\skills\.system\skill-creator\scripts\quick_validate.py skills\auto-research-evidence-claims
+python C:\Users\dxf\.codex\skills\.system\skill-creator\scripts\quick_validate.py skills\auto-research-maintainer
 ```
 
 Check that:
 
 - `SKILL.md` frontmatter has only `name` and `description`
 - `agents/openai.yaml` has `policy.allow_implicit_invocation: false`
+- child skill `agents/openai.yaml` files have narrow `policy.allow_implicit_invocation: true`
 - references are linked directly from `SKILL.md`
 - `SKILL.md` contains a compact operating kernel without loading all references by default
+- child skills are thin harness layers that route to shared references instead of duplicating full workflows
+- `stage-router.md` covers all 8 lifecycle stages and 5 stage actions
 - no real project state is stored in the skill
 - `experiment-work.md` is loaded only for experiment tasks
 - `control-loop.md` is loaded only for feedback, drift, context, or autonomy tasks
+- maintainer routes do not add CLI, SQLite, Web UI, automatic migration, automatic task queue, complete runtime, or automatic literature download

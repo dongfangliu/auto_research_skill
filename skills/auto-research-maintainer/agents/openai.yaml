@@ -1,0 +1,7 @@
+interface:
+  display_name: "Auto Research Maintainer"
+  short_description: "Maintain the Auto Research framework and skill suite"
+  default_prompt: "Use $auto-research-maintainer to update the Auto Research framework or skill suite without adding runtime features."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,5 +1,13 @@
 # Changelog
 
+## mvp-0.14 - Harness skill suite
+
+- Added five thin child skills: `auto-research-init`, `auto-research-continue`, `auto-research-experiment`, `auto-research-evidence-claims`, and `auto-research-maintainer`.
+- Kept `$auto-research` as the explicit compatibility entry while routing active Auto Research sessions to narrower child skills when available.
+- Added `stage-router.md` to map lifecycle stages and stage actions to child skills, minimum context, stop conditions, output contracts, and failure risks.
+- Updated README install guidance for the full skill suite while preserving legacy single-skill installation.
+- Extended forward tests and local checks for child-skill routing, stage navigation, evidence/claim boundaries, maintainer behavior, and runtime-creep prevention.
+
 ## mvp-0.13 - Optional project team profiles
 
 - Added `templates/team_profile.md` for project-specific role adaptations and advisory roles.

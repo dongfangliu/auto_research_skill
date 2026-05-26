@@ -1,0 +1,7 @@
+interface:
+  display_name: "Auto Research Evidence Claims"
+  short_description: "Audit evidence, claims, and manuscript readiness"
+  default_prompt: "Use $auto-research-evidence-claims to audit whether this evidence can support the current claim."
+
+policy:
+  allow_implicit_invocation: true

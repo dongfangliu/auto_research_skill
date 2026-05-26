@@ -1,0 +1,7 @@
+interface:
+  display_name: "Auto Research Init"
+  short_description: "Initialize or adopt Auto Research in file-first projects"
+  default_prompt: "Use $auto-research-init to initialize or adopt Auto Research in this project without modifying files before approval."
+
+policy:
+  allow_implicit_invocation: true

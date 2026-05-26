@@ -1,6 +1,6 @@
 ---
 name: auto-research
-description: Token-light, high-control research harness for file-first, evidence-bound scientific work. Use when the user explicitly invokes $auto-research, $auto research, Auto Research mode, or asks Codex to use the Auto Research framework for initializing or continuing a research project, designing, executing, or reviewing experiments, analyzing failures, handling research feedback, binding evidence to claims, auditing claims, drafting manuscript outlines, or adopting/upgrading the Auto Research framework.
+description: Token-light, high-control research harness for file-first, evidence-bound scientific work. Use when the user explicitly invokes $auto-research, $auto research, Auto Research mode, or asks Codex to use the Auto Research framework for initializing or continuing a research project, designing, executing, or reviewing experiments, analyzing failures, handling research feedback, binding evidence to claims, auditing claims, drafting manuscript outlines, or adopting/upgrading the Auto Research framework. Acts as the compatibility entry and dispatcher for the auto-research-init, auto-research-continue, auto-research-experiment, auto-research-evidence-claims, and auto-research-maintainer harness skills when they are available.
 ---
 
 # Auto Research
@@ -24,6 +24,20 @@ This skill does not replace the framework repository and does not create a runti
 - Separate verified facts, inferences, limitations, competing explanations, and next steps.
 - Mark unsupported claims as `speculative`; bind claims to evidence before manuscript use.
 - Default to one orchestrating agent. Use or simulate specialist roles only when a gate or risk justifies it.
+
+## Harness Dispatcher
+
+Use this skill as the session activator and compatibility entry. If the child skill suite is installed, route the next action to the narrowest matching child skill. If a child skill is not available, stay in this skill and load only the shared reference named below.
+
+| User intent | Prefer child skill | Fallback shared reference |
+| --- | --- | --- |
+| Initialize, adopt, repair a partial setup, or plan team calibration | `$auto-research-init` | `references/workflows.md`, then `prompts/init_project.md` when needed |
+| Continue, resume, daily brief, review, branch, revise, gate, or stage navigation | `$auto-research-continue` | `references/control-loop.md`, `references/workflows.md`, `references/output-contracts.md` |
+| Design, review, execute, or analyze experiments and failures | `$auto-research-experiment` | `references/experiment-work.md`, relevant templates |
+| Promote evidence, audit claims, bound wording, or check manuscript readiness | `$auto-research-evidence-claims` | `references/workflows.md`, `references/output-contracts.md` |
+| Maintain framework docs, skill files, forward tests, examples, or adoption/upgrade guidance | `$auto-research-maintainer` | `references/forward-tests.md`, `references/failure-modes.md` |
+
+For stage-first requests, load `references/stage-router.md` after repository classification. It maps lifecycle stage and action to the primary child skill, minimum files, stop condition, output contract, and failure risk.
 
 ## User-Facing Mode
 
@@ -56,7 +70,7 @@ Optimize for decision quality per token. Prefer one primary active item, one nex
 
 ## Load Only What Is Needed
 
-Start with `references/context-router.md` for repo classification, authority order, and minimal context loading. Then load at most the task-specific reference below:
+Start with `references/context-router.md` for repo classification, authority order, and minimal context loading. For stage-first or ambiguous requests, load `references/stage-router.md` next. Then load at most the task-specific reference below:
 
 | Task | Load |
 | --- | --- |
@@ -69,6 +83,8 @@ Start with `references/context-router.md` for repo classification, authority ord
 | Decide what to say back to the user | `references/output-contracts.md` |
 | Avoid common mistakes or debug bad behavior | `references/failure-modes.md` |
 | Maintain or validate this skill itself | `references/forward-tests.md` |
+
+When a child skill is active, it should still use these shared references as the source of truth rather than duplicating rules locally.
 
 Prefer framework files from `.auto_research/framework/` in consumer repos. When working inside the framework source repo, use local `framework/`, `templates/`, `prompts/`, and `examples/`.
 
