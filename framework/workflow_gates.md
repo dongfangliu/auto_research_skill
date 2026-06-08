@@ -117,7 +117,7 @@ Before execution, check:
 - Success criteria tied to the metric and decision.
 - Failure branches.
 - Diagnostics.
-- PI Verdict.
+- PI Verdict with strongest objection.
 
 ## Decision Record Gate
 

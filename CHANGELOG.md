@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Upgraded student/PI role guidance with minimum-test student proposals, PI strongest-objection review, and a lightweight lab-meeting loop while preserving the file-first MVP boundary.
+- Added `Student Experiment Proposal`, `Student Design Rationale`, PI `Strongest Objection`, related failure modes, and forward tests for role theater, rubber-stamp PI review, implementation-first student behavior, and execution-permission bypass.
 - Added experiment branch synthesis as a PR-style post-experiment consolidation layer with `templates/synthesis_card.md`, `Synthesis Brief`, synthesis state pointers, routing rules, low-frequency reminders, and mini-project `SYN-0001`.
 - Clarified that synthesis cards are not evidence, cannot strengthen claims, and must bind to experiment decisions or experiment-derived evidence.
 - Expanded initialization into an adaptive intake flow for idea-only users, existing projects with scattered files, partial setups, and inconsistent initialized repos.

@@ -24,7 +24,7 @@ If the spine cannot show how the result answers the main question, return `revis
 Use this sequence for design, execution, and review:
 
 1. Frame the mainline question and current decision from profile, state, and the active card.
-2. Draft the smallest experiment spine that can change that decision.
+2. Draft the smallest experiment spine and Student Experiment Proposal that can change that decision.
 3. Run Metric/Baseline Readiness before procedure details when measurement, comparison, scoring, sampling, or claim impact matters.
 4. Load the optional team profile only when project-specific role background or a custom advisor materially improves the current review.
 5. Check action permission before execution, long-running commands, file writes, specialist roles, evidence promotion, claim changes, or manuscript language.
@@ -33,6 +33,20 @@ Use this sequence for design, execution, and review:
 8. Convert results to a decision record before evidence. Use an Evidence Promotion Verdict before any claim impact.
 
 Keep the loop token-light: report only the fields that affect the next decision, reproducibility, evidence boundary, or user approval.
+
+## Lab Meeting Loop
+
+- Applicable stage: experiment design, experiment execution review, failure review, and result interpretation before claim impact.
+- Trigger condition: student and PI perspectives are both needed to decide whether a design, run, or interpretation should move forward.
+- Failure risk: role theater can produce long review blocks without a decision; a ceremonial PI can approve an experiment that cannot answer the mainline question.
+
+Use this light loop instead of adding more roles by default:
+
+1. `student-executor` proposes the minimum test, why it is small enough, what could fool it, what it will not answer, and what must be recorded.
+2. `pi-reviewer` independently pressure-tests the proposal or result. It must name the strongest objection, evidence gap, overclaim risk, and minimum next action; it should not merely restate the student plan.
+3. `orchestrator` resolves the disagreement or agreement into one actionable decision: approve, revise, block, branch, execute after permission, or stop.
+
+If PI approval is straightforward, the PI still states why no blocking concern remains. Advisor reports, team preferences, and PI opinions are review input only; they do not become evidence and do not approve execution by themselves.
 
 ## Metric/Baseline Readiness Before Details
 
@@ -68,9 +82,9 @@ If readiness is `revise`, `block`, or `branch`, stop before detailed procedure u
 For experiment work, use this order:
 
 1. `orchestrator`: frame the mainline question and active item from profile, `STATE.md`, and active cards.
-2. `student-executor`: draft the spine and readiness block before detailed procedure when measurement or comparison affects the decision.
+2. `student-executor`: draft the spine, Student Experiment Proposal, and readiness block before detailed procedure when measurement or comparison affects the decision.
 3. `method-specialist`: review readiness before execution when metrics, baselines, statistics, controls, numerical stability, sampling, or scoring matter.
-4. `pi-reviewer`: critique independently with a direct PI Verdict.
+4. `pi-reviewer`: critique independently with a direct PI Verdict that includes the strongest objection.
 5. `orchestrator`: resolve conflicts and decide whether to write, revise, branch, execute, or stop.
 
 When subagents are available and allowed, use separate agents for `student-executor` and `pi-reviewer`, and add `method-specialist` before PI when readiness validity depends on measurement or controls. If not, write separate role blocks in the same response and do not let the PI block merely confirm the student plan.
@@ -84,6 +98,7 @@ If a project team profile defines `advisor:<role_id>`, consult that advisor only
 An experiment brief must include:
 
 - Experiment Spine.
+- Student Design Rationale or Student Experiment Proposal.
 - Metric/Baseline Readiness verdict when measurement or comparison affects the decision.
 - Execution preflight: required files, commands, permissions, runtime cost, and stop conditions.
 - Background facts needed to interpret the result.
@@ -155,13 +170,14 @@ Use direct language:
 ```text
 Decision: approve | revise | block | branch
 Plain Reason
+Strongest Objection
 Blocking Issues
 Required Changes
 Overclaim Risk
 Minimum Next Action
 ```
 
-Start with the decision. Avoid vague advice such as "more research is needed" unless it is attached to a concrete next action.
+Start with the decision. Avoid vague advice such as "more research is needed" unless it is attached to a concrete next action. If the decision is `approve`, state the best remaining concern or why no blocking concern remains.
 
 ## Failure Review
 

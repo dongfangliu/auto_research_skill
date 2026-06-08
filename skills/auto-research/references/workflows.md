@@ -108,7 +108,7 @@ At the workflow level, experiment work must:
 - pass Metric/Baseline Readiness before execution when measurement or comparison affects the decision
 - keep student execution and PI critique separate
 - record deviations, failures, competing explanations, and linked evidence
-- use direct PI Verdicts instead of vague review prose
+- use direct PI Verdicts with a strongest objection instead of vague review prose
 - use the optional team profile only when project-specific role background or `advisor:<role_id>` input improves the current decision
 
 ## Post-Experiment Synthesis

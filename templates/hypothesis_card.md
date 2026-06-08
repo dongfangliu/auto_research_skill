@@ -52,6 +52,7 @@ Describe the smallest experiment that can reduce the main uncertainty.
 ```text
 Decision: approve | revise | block | branch
 Plain Reason:
+Strongest Objection:
 Blocking Issues:
 Required Changes:
 Overclaim Risk:

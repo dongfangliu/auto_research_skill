@@ -32,6 +32,17 @@ will_not_answer:
 stop_or_branch_rule:
 ```
 
+## Student Design Rationale
+
+- Decision it can change:
+- Smallest test:
+- Why this is small enough:
+- Alternative tests rejected:
+- What could fool us:
+- Claim boundary:
+- Execution needs:
+- Will not answer:
+
 ## Metric/Baseline Readiness
 
 ```text
@@ -107,6 +118,7 @@ Files, tables, figures, logs, or notes expected.
 ```text
 Decision: approve | revise | block | branch
 Plain Reason:
+Strongest Objection:
 Blocking Issues:
 Required Changes:
 Overclaim Risk:

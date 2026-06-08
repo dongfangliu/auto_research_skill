@@ -90,6 +90,7 @@ The smallest action that reduces the largest uncertainty.
 ```text
 Decision: approve | revise | block | branch
 Plain Reason:
+Strongest Objection:
 Blocking Issues:
 Required Changes:
 Overclaim Risk:

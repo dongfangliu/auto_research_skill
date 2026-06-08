@@ -56,7 +56,7 @@ Files Likely To Change
 
 ## Plain Research Reply
 
-Use this as the default user-facing shape for ordinary work. Keep internal gate, role, card, claim, and evidence terminology out unless the user asks for it or a blocker needs exact wording.
+Use this as the default user-facing shape for ordinary work. Keep internal gate, role, card, claim, and evidence terminology out unless the user asks for it or a blocker needs exact wording. Prefer this visible shape before printing internal role blocks; show student, PI, auditor, or gate contracts only when the user asked for review, the record needs them, or a blocker depends on the exact decision.
 
 ```text
 Right now:
@@ -96,6 +96,25 @@ Will Not Do
 ```
 
 Keep it under 10 lines. Use it to make control explicit without loading or printing broader project history.
+
+## Student Experiment Proposal
+
+Use when the student-executor designs or revises an experiment before PI review:
+
+```text
+Student Experiment Proposal
+Decision It Can Change
+Smallest Test
+Why This Is Small Enough
+Metric/Baseline
+What Could Fool Us
+Stop/Branch Rule
+Claim Boundary
+Execution Needs
+Will Not Answer
+```
+
+Keep it concrete. Do not move into detailed commands or procedure until the decision, metric or rubric, baseline or control, and claim boundary are clear enough for PI review.
 
 ## Daily Brief
 
@@ -283,13 +302,14 @@ Use for PI feedback before execution, after execution, before strengthening clai
 ```text
 Decision: approve | revise | block | branch
 Plain Reason
+Strongest Objection
 Blocking Issues
 Required Changes
 Overclaim Risk
 Minimum Next Action
 ```
 
-Start with the decision. Use short, human-readable sentences. Do not use generic phrases like "further research is needed" without naming the next action.
+Start with the decision. Use short, human-readable sentences. Do not use generic phrases like "further research is needed" without naming the next action. If the decision is `approve`, `Strongest Objection` should state the best remaining concern or say why no blocking concern remains.
 
 ## Orchestrator Resolution
 

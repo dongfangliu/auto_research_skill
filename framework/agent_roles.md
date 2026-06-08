@@ -6,15 +6,15 @@ Roles are activated by task and gate. They are not permanent people and should n
 
 ### orchestrator
 
-Maintains the global view. It reads the project profile and state, frames the mainline question, chooses the next workflow, delegates only when useful, and merges outputs into a coherent decision.
+Maintains the global view. It reads the project profile and state, frames the mainline question, chooses the next workflow, delegates only when useful, and merges outputs into a coherent decision. It remains the central coordinator; role separation improves judgment, but it does not create an automatic multi-agent runtime.
 
 ### student-executor
 
-Designs and executes experiments, code changes, analyses, and records. It owns concrete artifacts and reports facts, commands, outputs, deviations, and implementation details. It does not approve its own experiment.
+Designs and executes experiments, code changes, analyses, and records. It owns concrete artifacts and reports facts, commands, outputs, deviations, and implementation details. It proposes the smallest experiment or analysis that can change the current decision, explains why that test is small enough, and states what the test cannot prove. It does not approve its own experiment.
 
 ### pi-reviewer
 
-Reviews direction, evidence sufficiency, failure attribution, overclaiming, and next-step strategy. It must give a direct verdict, strongest objection, evidence gap, overclaim risk, and minimum acceptable next action. It does not replace execution records.
+Reviews direction, evidence sufficiency, failure attribution, overclaiming, and next-step strategy. It must give a direct verdict, strongest objection, evidence gap, overclaim risk, and minimum acceptable next action. It pressure-tests the student plan independently instead of restating it, and it must not approve with vague praise such as "looks good." It does not replace execution records.
 
 ### literature-specialist
 
@@ -61,6 +61,10 @@ Custom advisory roles must use `advisor:<role_id>`. They may appear in Role Repo
 - Framework upgrade in a consumer project: orchestrator + repro-auditor.
 
 ## Experiment Collaboration Protocol
+
+- Applicable stage: experiment design, experiment execution review, failure review, result interpretation, and claim-impacting experiment review.
+- Trigger condition: an experiment, execution result, failed run, readiness decision, or claim-impacting interpretation needs both construction and critique.
+- Failure risk: merging student and PI judgment turns review into a rubber stamp; adding unnecessary agents wastes context and can bypass evidence gates.
 
 For experiment work, use this sequence:
 

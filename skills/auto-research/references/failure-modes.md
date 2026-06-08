@@ -116,11 +116,41 @@ Risk: running an experiment or strengthening a comparative claim when the metric
 
 Guardrail: use the Metric/Baseline Readiness Gate. Missing metric or baseline means `revise` or `block`; missing threshold or ambiguity rule means `revise`. Do not treat a qualitative demo as comparative evidence.
 
+## Student Implementation First
+
+Applicable stage: experiment design and pre-execution review.
+
+Trigger condition: the agent starts writing commands, scripts, procedures, or artifact paths before the decision, metric or rubric, baseline or control, and claim boundary are locked.
+
+Failure risk: the experiment becomes an implementation task that cannot answer the mainline question, and later PI review is forced to critique details instead of the design.
+
+Guardrail: require Experiment Spine and Student Experiment Proposal before detailed procedure. If the metric, baseline, threshold, ambiguity rule, or claim boundary is missing, return `revise`, `block`, or `branch` before writing execution details.
+
 ## PI Jargon Feedback
 
 Risk: PI review becomes vague academic prose that the user cannot act on.
 
-Guardrail: use a PI Verdict with `Decision`, `Plain Reason`, `Blocking Issues`, `Required Changes`, `Overclaim Risk`, and `Minimum Next Action`.
+Guardrail: use a PI Verdict with `Decision`, `Plain Reason`, `Strongest Objection`, `Blocking Issues`, `Required Changes`, `Overclaim Risk`, and `Minimum Next Action`.
+
+## Ceremonial PI Review
+
+Applicable stage: experiment design, execution review, failure review, result interpretation, claim-building review, and manuscript readiness review.
+
+Trigger condition: PI feedback says the plan looks good, repeats the student plan, or gives broad advice without a strongest objection and minimum next action.
+
+Failure risk: the PI becomes a rubber stamp, weak experiments pass, and overclaiming enters evidence or manuscript work.
+
+Guardrail: PI Verdicts must include `Strongest Objection`. If the verdict is `approve`, the PI must still state the best remaining concern or why no blocking concern remains.
+
+## Role Theater
+
+Applicable stage: any user-facing Auto Research response.
+
+Trigger condition: the response prints multiple role blocks, gate labels, or internal framework terminology when the user only needs the next research action or a short explanation.
+
+Failure risk: the workflow sounds professional but becomes harder to use; the user sees process instead of decisions.
+
+Guardrail: default to Plain Research Reply for ordinary work. Show role reports, PI Verdicts, readiness gates, and claim audits only when review was requested, a durable record needs them, or a blocker depends on exact gate wording.
 
 ## Premature Multi-Agent Work
 
@@ -145,6 +175,16 @@ Guardrail: advisors return Role Reports only. The orchestrator resolves their in
 Risk: adding CLI, databases, task queues, migrations, or web UI while trying to improve the file-first MVP.
 
 Guardrail: document repeated pain as a future candidate. Do not implement runtime unless the user explicitly changes scope.
+
+## Automation Creep From AI Scientist Patterns
+
+Applicable stage: framework maintenance, skill maintenance, experiment workflow design, and consumer adoption guidance.
+
+Trigger condition: external automated-science systems inspire a proposal to add autonomous experiment queues, automatic paper writing, automatic review loops, databases, dashboards, or unattended multi-agent execution.
+
+Failure risk: Auto Research stops being a file-first human-guided MVP and starts storing real project state or irreversible decisions in an unvalidated runtime.
+
+Guardrail: borrow only lightweight role-separation and critique patterns. Do not add CLI, database, Web UI, automatic migration, task queue, automatic literature download, or complete multi-agent runtime during MVP.
 
 ## Autonomy Bypass
 
